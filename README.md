@@ -8,6 +8,9 @@ whenever you need them. This repository is a collection of skills like that,
 built to work the same way across three different AI tools: Codex, Claude
 Code, and GitHub Copilot CLI.
 
+[![Links: K THE TECHMAN](https://img.shields.io/badge/K_THE_TECHMAN-All_links-D97706?style=flat-square&labelColor=181512)](https://khadir-syed.github.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-D97706?style=flat-square&labelColor=181512)](LICENSE)
+
 ## Quick start
 
 ```bash
