@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Only this site's own files and the GitHub profile photo (the tab icon)
+       may load. Nothing on this page sends data anywhere. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; connect-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Two AI agents do the same job: one asks you after every step, one asks only before saving. See real recorded runs side by side.">
+  <title>Do the whole job with me — k_ai-agent-skills</title>
+  <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=64">
+  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=180">
+  <link rel="stylesheet" href="../../style.css">
+  <script src="../../markdown.js" defer></script>
+  <script src="../../run.js" defer></script>
+</head>
+<body class="j-together">
+  <!-- All English text lives right here, so the page reads instantly.
+       data-t names each piece for future translations. -->
+  <main class="wrap">
+    <a class="back" href="../">← All agents</a>
+    <header class="hero">
+      <span class="badge job" data-t="badge">AI agents · Product team · Feature Launch Readiness Agent</span>
+      <h1 data-t="title">Do the whole job with me</h1>
+      <p class="subtitle" data-t="subtitle">Same job, two agents: one asks after every step, one asks once</p>
+    </header>
+
+    <section class="card">
+      <p data-t="intro_1">Think of two people helping you. A new intern checks with you after every task: "Done with this — shall I carry on?" An experienced colleague does the routine parts alone, but still asks before sending anything out in your name.</p>
+      <p data-t="intro_2">An <b>agent</b> is an AI that does several steps in a row. Both agents here do the same 3 skill jobs: <a class="inline-link" href="../../skills/find/">find what's missing</a>, <a class="inline-link" href="../../skills/draft/">write a first draft</a> (a short launch plan, saved as a file) and <a class="inline-link" href="../../skills/check/">run the 6 launch checks</a>. The only difference is how often they stop to ask you.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-t="compare_heading">One job, two ways</h2>
+      <svg class="picture" viewBox="0 0 360 362" role="img" aria-labelledby="pic-title pic-desc">
+        <title id="pic-title">Controlled vs autonomous</title>
+        <desc id="pic-desc">Both agents do the same 3 steps. The controlled agent stops to ask you after step 1, before saving the file in step 2, and after step 3: 3 stops. The autonomous agent only stops once, before saving the file: 1 stop.</desc>
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="tip" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+        <text x="91" y="24" text-anchor="middle">Controlled</text>
+        <text x="269" y="24" text-anchor="middle">Autonomous</text>
+        <rect class="hot" x="10" y="40" width="162" height="40" rx="10"/>
+        <text class="sub" x="91" y="65" text-anchor="middle">1  Find what's missing</text>
+        <rect class="stop" x="22" y="92" width="138" height="30" rx="15"/>
+        <text class="stop-text" x="91" y="112" text-anchor="middle">Stop: go on?</text>
+        <rect class="hot" x="10" y="134" width="162" height="40" rx="10"/>
+        <text class="sub" x="91" y="159" text-anchor="middle">2  Write the plan</text>
+        <rect class="stop" x="22" y="186" width="138" height="30" rx="15"/>
+        <text class="stop-text" x="91" y="206" text-anchor="middle">Stop: OK to save?</text>
+        <rect class="hot" x="10" y="228" width="162" height="40" rx="10"/>
+        <text class="sub" x="91" y="253" text-anchor="middle">3  Run the 6 checks</text>
+        <rect class="stop" x="22" y="280" width="138" height="30" rx="15"/>
+        <text class="stop-text" x="91" y="300" text-anchor="middle">Stop: all done?</text>
+        <text x="91" y="346" text-anchor="middle">3 stops</text>
+        <rect class="hot" x="188" y="40" width="162" height="40" rx="10"/>
+        <text class="sub" x="269" y="65" text-anchor="middle">1  Find what's missing</text>
+        <path class="line" d="M269,80 V128" marker-end="url(#arrow)"/>
+        <rect class="hot" x="188" y="134" width="162" height="40" rx="10"/>
+        <text class="sub" x="269" y="159" text-anchor="middle">2  Write the plan</text>
+        <rect class="stop" x="200" y="186" width="138" height="30" rx="15"/>
+        <text class="stop-text" x="269" y="206" text-anchor="middle">Stop: OK to save?</text>
+        <rect class="hot" x="188" y="228" width="162" height="40" rx="10"/>
+        <text class="sub" x="269" y="253" text-anchor="middle">3  Run the 6 checks</text>
+        <path class="line" d="M269,268 V284"/>
+        <text class="sub" x="269" y="302" text-anchor="middle">done</text>
+        <text x="269" y="346" text-anchor="middle">1 stop</text>
+      </svg>
+      <p data-t="compare_1"><b>Controlled</b> stops after every step. It even refuses "just do it all at once" — the stops are the whole point of this version.</p>
+      <p data-t="compare_2"><b>Autonomous</b> doesn't stop between routine steps, but it still asks before it saves the file. Fewer stops doesn't mean fewer rules.</p>
+      <p class="lesson" data-t="lesson">The lesson: "autonomous" is not a yes/no switch. It's a choice about <i>where</i> a person checks the work — and saving or sending something is always one of those places.</p>
+    </section>
+
+    <section class="card" id="asked">
+      <h2 data-t="asked_heading">What we gave both agents</h2>
+      <p data-t="asked_intro">The same one-line request as before — this time for the Orders page, with nothing else to go on.</p>
+      <div data-example="agents/product/feature-launch-readiness-agent-controlled/examples/csv-export-launch.md">
+        <p class="try-label" data-t="asked_controlled">To the controlled agent:</p>
+        <p class="prompt">Use the Feature Launch Readiness Agent (controlled) on this: "Add CSV export to the Orders page, launching next Tuesday." Draft the brief to `launch-brief.md`.</p>
+      </div>
+      <div data-example="agents/product/feature-launch-readiness-agent-autonomous/examples/csv-export-launch.md">
+        <p class="try-label" data-t="asked_autonomous">To the autonomous agent:</p>
+        <p class="prompt">Use the Feature Launch Readiness Agent (autonomous) on this: "Add CSV export to the Orders page, launching next Tuesday." Draft the brief to `launch-brief.md`.</p>
+        <p class="try-label" data-t="asked_context">What both of them knew:</p>
+        <pre class="evidence">Ask: "Add CSV export to the Orders page, launching next Tuesday."
+No PRD, no rollout plan, no success metric mentioned.</pre>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 data-t="runs_heading">What the real agents did</h2>
+      <p data-t="runs_intro">Two real runs, one per agent. Each time an agent stopped to ask, the reply typed back is shown too.</p>
+      <div class="side-by-side">
+        <div class="run" id="run-controlled" data-run="feature-launch-readiness-agent-controlled"
+             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
+             data-ai="The agent" data-you="Reply typed back" data-file="The file it saved:"
+             data-show="Show all" data-less="Show less"
+             data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
+             data-missing="This real run hasn't been added yet."
+             data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <p class="side-title">Controlled</p>
+          <p class="stops"></p>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+        </div>
+        <div class="run" id="run-autonomous" data-run="feature-launch-readiness-agent-autonomous"
+             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
+             data-ai="The agent" data-you="Reply typed back" data-file="The file it saved:"
+             data-show="Show all" data-less="Show less"
+             data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
+             data-missing="This real run hasn't been added yet."
+             data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <p class="side-title">Autonomous</p>
+          <p class="stops"></p>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+        </div>
+      </div>
+      <noscript><p class="warning">Showing the recorded runs needs JavaScript switched on in your browser.</p></noscript>
+    </section>
+
+    <section class="card links">
+      <p class="muted" data-t="private_note">This page never talks to an AI. It shows runs that were recorded earlier, exactly as the agents wrote them — except two personal details we took out: a folder name on our computer, and a time zone.</p>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/agents/product/feature-launch-readiness-agent-controlled" rel="noopener noreferrer" data-t="controlled_link">See the controlled agent's recipe card on GitHub</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/agents/product/feature-launch-readiness-agent-autonomous" rel="noopener noreferrer" data-t="autonomous_link">See the autonomous agent's recipe card on GitHub</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills#using-the-install-script" rel="noopener noreferrer" data-t="install_link">Use them in your own AI tool</a>
+    </section>
+
+    <footer class="footer" data-t="footer">Learning should not stop.</footer>
+  </main>
+</body>
+</html>

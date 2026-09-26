@@ -12,6 +12,8 @@
 
 const Runs = (() => {
   const MARK = /^=== (AI|YOU|FILE)(?: (.+?))? ===$/;
+  // runs/ sits next to this script, however deep the page is.
+  const RUNS = typeof document === "object" ? new URL("runs/", document.currentScript.src) : null;
 
   function parse(text) {
     text = text.replace(/\r\n/g, "\n");
@@ -46,6 +48,8 @@ const Runs = (() => {
   // The first part of a long answer, the rest behind "Show all" (the cut
   // itself is in style.css). An answer only a little longer than the cut is
   // shown in full: hiding a few lines behind a button isn't worth the click.
+  // Measured once the answer is on screen: a team tab that isn't picked yet
+  // is hidden and has no height.
   function answerBox(text, labels) {
     const box = document.createElement("div");
     box.className = "answer";
@@ -53,7 +57,9 @@ const Runs = (() => {
     md.className = "md clamped";
     md.append(...Markdown.tree(text).map(Markdown.toDom));
     box.append(md);
-    requestAnimationFrame(() => {
+    const seen = new ResizeObserver(() => {
+      if (!md.clientHeight) return;
+      seen.disconnect();
       if (md.scrollHeight <= md.clientHeight * 1.5) { md.classList.remove("clamped"); return; }
       const more = document.createElement("button");
       more.type = "button";
@@ -68,6 +74,7 @@ const Runs = (() => {
       });
       box.append(more);
     });
+    seen.observe(md);
     return box;
   }
 
@@ -109,7 +116,7 @@ const Runs = (() => {
     for (const el of document.querySelectorAll(".run[data-run]")) {
       const status = el.querySelector(".run-status");
       try {
-        const res = await fetch(`../runs/${el.dataset.run}.md`);
+        const res = await fetch(new URL(`${el.dataset.run}.md`, RUNS));
         if (res.status === 404) { status.textContent = el.dataset.missing; continue; }
         if (!res.ok) throw new Error(`${el.dataset.run}: ${res.status}`);
         show(el, parse(await res.text()));

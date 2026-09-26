@@ -39,7 +39,7 @@ instead of just running the investigation.
 - [Skills (Stage 1)](skills/README.md) — how a skill works, the full list of skills, example runs, and prompts you can try yourself
 - [Agents (Stage 2)](agents/README.md) — six agents, some that check in with you at every step and some that check in less, example runs, and tests where we tried to trick them
 - [Orchestrators (Stage 3)](orchestrators/README.md) — a "router" that figures out which agent should handle your request
-- [Web version](web/README.md) — the Product skills and agents explained in plain words in your browser, with real recorded runs (for non-coders)
+- [Web version](web/README.md) — the skills and agents explained in plain words in your browser, with real recorded runs (for non-coders)
 - [Use a skill, agent, or orchestrator in an AI coding tool](#use-a-skill-in-an-ai-coding-tool)
 - [Troubleshooting](#troubleshooting)
 - [What these samples do not provide](#what-these-samples-do-not-provide)

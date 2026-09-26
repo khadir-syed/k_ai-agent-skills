@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Only this site's own files and the GitHub profile photo (the tab icon)
+       may load. Nothing on this page sends data anywhere. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; connect-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="AI checklists that run the same 6 checks every time, and leave the decision to you — for four teams, with real recorded runs.">
+  <title>Is it ready to go? — k_ai-agent-skills</title>
+  <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=64">
+  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=180">
+  <link rel="stylesheet" href="../../style.css">
+  <script src="../../markdown.js" defer></script>
+  <script src="../../run.js" defer></script>
+</head>
+<body class="j-check">
+  <!-- All English text lives right here, so the page reads instantly.
+       data-t names each piece for future translations. -->
+  <main class="wrap">
+    <a class="back" href="../">← All skills</a>
+    <header class="hero">
+      <span class="badge job" data-t="badge">AI skills · Job 3</span>
+      <h1 data-t="title">Is it ready to go?</h1>
+      <p class="subtitle" data-t="subtitle">The same 6 checks, every time — you make the call</p>
+    </header>
+
+    <section class="card">
+      <p data-t="intro_1">Before every take-off, pilots read the same checklist — even after a thousand flights. Not because they forget, but because a list never gets tired or rushed. And the checklist never flies the plane: the pilot still decides.</p>
+      <p data-t="intro_2">These skills are that checklist — for a new feature, a blog post, a social media post or a change to a program. Each one runs its own 6 checks, marks each one, and shows why. If it can't tell, it says so instead of guessing. Whether to launch, publish or go ahead stays your decision.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-t="how_heading">How it works</h2>
+      <p class="legend" data-t="legend">Each check gets one mark: <b>Pass</b>, <b>Fail</b>, <b>Could not determine</b> (not enough information to tell) or <b>N/A</b> (doesn't apply).</p>
+      <svg class="picture" viewBox="0 0 360 332" role="img" aria-labelledby="pic-title pic-desc">
+        <title id="pic-title">How it works</title>
+        <desc id="pic-desc">Something about to go out goes through the same 6 checks every time. Each check gets pass, fail or can't tell. Then you decide whether it goes out; the AI never makes that call.</desc>
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="tip" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+        <rect class="box" x="30" y="8" width="300" height="44" rx="12"/>
+        <text x="180" y="36" text-anchor="middle">Something about to go out</text>
+        <path class="line" d="M180,52 V76" marker-end="url(#arrow)"/>
+        <rect class="hot" x="30" y="82" width="300" height="80" rx="12"/>
+        <text x="180" y="114" text-anchor="middle">The same 6 checks</text>
+        <text class="sub" x="180" y="140" text-anchor="middle">every time — each team has its own 6</text>
+        <path class="line" d="M180,162 V186" marker-end="url(#arrow)"/>
+        <rect class="box" x="30" y="192" width="300" height="44" rx="12"/>
+        <text x="180" y="220" text-anchor="middle">Pass · Fail · Can't tell — each</text>
+        <path class="line" d="M180,236 V260" marker-end="url(#arrow)"/>
+        <rect class="stop" x="30" y="266" width="300" height="58" rx="12"/>
+        <text class="stop-text" x="180" y="290" text-anchor="middle">You decide: does it go out?</text>
+        <text class="sub" x="180" y="310" text-anchor="middle">The AI never makes that call</text>
+      </svg>
+    </section>
+
+    <div class="team-pick">
+      <input type="radio" name="team" id="team-product" class="t-product" checked>
+      <input type="radio" name="team" id="team-content" class="t-content">
+      <input type="radio" name="team" id="team-social" class="t-social">
+      <input type="radio" name="team" id="team-software" class="t-software">
+      <section class="card team-card">
+        <h2 data-t="team_heading">Pick a team</h2>
+        <p data-t="team_intro">Every team has its own checklist. Pick one to see its 6 checks, its request and what the real AI said.</p>
+        <div class="team-tabs">
+          <label for="team-product" class="l-product">Product</label>
+          <label for="team-content" class="l-content">Content</label>
+          <label for="team-social" class="l-social">Social media</label>
+          <label for="team-software" class="l-software">Software</label>
+        </div>
+      </section>
+
+      <!-- ===== Product ===== -->
+      <div class="team-panel p-product">
+        <section class="card">
+          <h2 data-t="product_checks_heading">The 6 checks before a feature launches</h2>
+          <p data-t="product_skill">The Product team's skill is the <span class="skill-name">Feature Launch Readiness Checklist</span>.</p>
+          <ol class="checks">
+            <li>If something goes wrong, can we switch it off fast?</li>
+            <li>Can we give it to a few people first, instead of everyone at once?</li>
+            <li>How will we know it worked — is there a number to watch?</li>
+            <li>Are the help pages ready?</li>
+            <li>Does the support team know it's coming?</li>
+            <li>Are any known problems still open?</li>
+          </ol>
+        </section>
+        <section class="card">
+          <h2 data-t="product_good_heading">A good check vs a weak one</h2>
+          <p data-t="product_good_intro">For the feature below, this is what we built the skill to do — and the kind of answer it must avoid.</p>
+          <ul class="examples">
+            <li class="ex good">
+              <p class="ex-say">✅ "A few people first: <b>Fail</b>. There is an on/off switch, but it's already on for everyone."</p>
+              <p class="ex-why">Good: it checked what the switch is actually used for.</p>
+            </li>
+            <li class="ex good">
+              <p class="ex-say">✅ "5 of the 6 checks failed. This is input for whoever decides the launch."</p>
+              <p class="ex-why">Good: clear facts, and the decision stays with you.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "A few people first: <b>Pass</b> — there's an on/off switch."</p>
+              <p class="ex-why">Weak: having a switch isn't the same as using it to go slowly.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "Don't launch this week."</p>
+              <p class="ex-why">Weak: that's your call, not the checklist's.</p>
+            </li>
+          </ul>
+          <p class="lesson" data-t="product_lesson">The lesson: a checklist is only useful if it's honest — a "Pass" needs a real reason, and "I can't tell" is a fine answer.</p>
+        </section>
+        <section class="card" data-example="skills/product/feature-launch-readiness-checklist/examples/export-feature-launch.md">
+          <h2 data-t="asked_heading">What we gave the AI</h2>
+          <p class="try-label" data-t="asked_request">The request:</p>
+          <p class="prompt">Use the Feature Launch Readiness Checklist on the CSV export feature we're shipping this week.</p>
+          <p class="try-label" data-t="product_context">What the team knew, the week of launch:</p>
+          <pre class="evidence">Feature: CSV export of the currently filtered Reports view, for
+Analyst-role users and above.
+
+Known so far:
+- Behind a feature flag, currently enabled for 100% of eligible users
+  (no staged rollout planned).
+- No rollback plan beyond "turn the feature flag off."
+- Success metric: PRD states the goal is reducing export-related support
+  tickets (~15/month baseline) but no target number or dashboard exists yet.
+- No documentation or help-center article has been written.
+- Support team has not been given any advance notice.
+- One open bug: export fails silently for reports with &gt;10,000 rows;
+  not yet fixed, not yet explicitly accepted as a known limitation.</pre>
+          <p class="muted" data-t="flag_note">A "feature flag" is an on/off switch for a feature, so it can be turned off without a new release.</p>
+        </section>
+        <section class="card run" data-run="feature-launch-readiness-checklist"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
+                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-show="Show all" data-less="Show less"
+                 data-missing="This real run hasn't been added yet."
+                 data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <h2 data-t="run_heading">What the real AI said</h2>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+          <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
+          <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/product/feature-launch-readiness-checklist" rel="noopener noreferrer" data-t="product_link">See this skill's recipe card on GitHub</a>
+        </section>
+      </div>
+
+      <!-- ===== Content ===== -->
+      <div class="team-panel p-content">
+        <section class="card">
+          <h2 data-t="content_checks_heading">The 6 checks before a blog post goes live</h2>
+          <p data-t="content_skill">The Content team's skill is the <span class="skill-name">Content Publish Readiness Checklist</span>.</p>
+          <ol class="checks">
+            <li>No spelling mistakes, and no leftover placeholders like "[insert stat here]"?</li>
+            <li>Does every link go somewhere real?</li>
+            <li>Can search engines find it — is there a title and a short summary?</li>
+            <li>Does every picture have a short description for people who can't see it ("alt text")?</li>
+            <li>Does every number or claim come from a real source?</li>
+            <li>Does it sound like the company's style guide says it should?</li>
+          </ol>
+        </section>
+        <section class="card">
+          <h2 data-t="content_good_heading">A good check vs a weak one</h2>
+          <p data-t="content_good_intro">For the draft below, this is what we built the skill to do — and the kind of answer it must avoid.</p>
+          <ul class="examples">
+            <li class="ex good">
+              <p class="ex-say">✅ "Links: <b>Fail</b>. 'Read more at #' doesn't go anywhere."</p>
+              <p class="ex-why">Good: it points at the exact problem.</p>
+            </li>
+            <li class="ex good">
+              <p class="ex-say">✅ "Numbers have a source: <b>Could not determine</b>. The number isn't written yet — check its source once it is."</p>
+              <p class="ex-why">Good: "I can't tell yet" is honest, and it says what to do next.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "Looks good, ready to publish!"</p>
+              <p class="ex-why">Weak: it missed a leftover placeholder, a dead link and a missing title.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ It quietly fills in the placeholder and adds the picture description itself.</p>
+              <p class="ex-why">Weak: a checklist reports problems. Fixing them is your call.</p>
+            </li>
+          </ul>
+          <p class="lesson" data-t="content_lesson">The lesson: a good check finds the "[insert stat here]" before your readers do.</p>
+        </section>
+        <section class="card" data-example="skills/content/content-publish-readiness-checklist/examples/launch-post-checklist.md">
+          <h2 data-t="asked_heading">What we gave the AI</h2>
+          <p class="try-label" data-t="asked_request">The request:</p>
+          <p class="prompt">Use the Content Publish Readiness Checklist on draft-blog-post.md before we publish it.</p>
+          <p class="try-label" data-t="content_context">The part of the draft it had to check:</p>
+          <pre class="evidence">Title: (none set)
+Body: "...check out our new export feature [insert stat here] and
+see the difference for yourself! Read more at #."
+Image: &lt;img src="export-screenshot.png"&gt; (no alt attribute)
+Brand guide: not supplied.</pre>
+          <p class="muted" data-t="content_note">The "Image" line is how a web page adds a picture. The "alt attribute" is where its description would go — here it's missing.</p>
+        </section>
+        <section class="card run" data-run="content-publish-readiness-checklist"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
+                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-show="Show all" data-less="Show less"
+                 data-missing="This real run hasn't been added yet."
+                 data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <h2 data-t="run_heading">What the real AI said</h2>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+          <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
+          <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/content/content-publish-readiness-checklist" rel="noopener noreferrer" data-t="content_link">See this skill's recipe card on GitHub</a>
+        </section>
+      </div>
+
+      <!-- ===== Social media ===== -->
+      <div class="team-panel p-social">
+        <section class="card">
+          <h2 data-t="social_checks_heading">The 6 checks before a post goes out</h2>
+          <p data-t="social_skill">The Social media team's skill is the <span class="skill-name">Social Publish Readiness Checklist</span>.</p>
+          <ol class="checks">
+            <li>Is it short enough for the site's character limit?</li>
+            <li>Are the hashtags written correctly, and about the post?</li>
+            <li>Does the picture or video fit the site's size rules?</li>
+            <li>Do pictures have a description, and videos have subtitles?</li>
+            <li>Do links go somewhere real, and can the team count the clicks?</li>
+            <li>Does it clash with another planned post, or a bad moment to post?</li>
+          </ol>
+        </section>
+        <section class="card">
+          <h2 data-t="social_good_heading">A good check vs a weak one</h2>
+          <p data-t="social_good_intro">For the post below, this is what we built the skill to do — and the kind of answer it must avoid.</p>
+          <ul class="examples">
+            <li class="ex good">
+              <p class="ex-say">✅ "Hashtags: <b>Fail</b>. '# export' has a space in it, and #followus, #like and #share have nothing to do with the post."</p>
+              <p class="ex-why">Good: it says exactly what's wrong and why.</p>
+            </li>
+            <li class="ex good">
+              <p class="ex-say">✅ "Character limit: <b>Could not determine</b>. You didn't say which limit your account has."</p>
+              <p class="ex-why">Good: some accounts allow longer posts, so it doesn't assume.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "Character limit: <b>Pass</b> — it's under 280."</p>
+              <p class="ex-why">Weak: it assumed a limit nobody confirmed.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "Don't post this."</p>
+              <p class="ex-why">Weak: that's your call, not the checklist's.</p>
+            </li>
+          </ul>
+          <p class="lesson" data-t="social_lesson">The lesson: a quick post still deserves a proper check — and an honest "I can't tell".</p>
+        </section>
+        <section class="card" data-example="skills/socialmedia/social-publish-readiness-checklist/examples/launch-post-checklist.md">
+          <h2 data-t="asked_heading">What we gave the AI</h2>
+          <p class="try-label" data-t="asked_request">The request:</p>
+          <p class="prompt">Use the Social Publish Readiness Checklist on draft-caption.md before we post it to Twitter/X.</p>
+          <p class="try-label" data-t="social_context">The draft post it had to check:</p>
+          <pre class="evidence">Platform: Twitter/X (280-character limit not confirmed by user).
+Caption: "Check out our new export feature! # export #newfeature
+#trending #followus #like #share See more at bit.ly/xyz"
+Image: &lt;img src="export-screenshot.png"&gt; (no alt attribute)
+Posting calendar: not supplied.</pre>
+          <p class="muted" data-t="social_note">"bit.ly/xyz" is a shortened link. The "alt attribute" is where a picture's description would go — here it's missing.</p>
+        </section>
+        <section class="card run" data-run="social-publish-readiness-checklist"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
+                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-show="Show all" data-less="Show less"
+                 data-missing="This real run hasn't been added yet."
+                 data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <h2 data-t="run_heading">What the real AI said</h2>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+          <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
+          <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/socialmedia/social-publish-readiness-checklist" rel="noopener noreferrer" data-t="social_link">See this skill's recipe card on GitHub</a>
+        </section>
+      </div>
+
+      <!-- ===== Software ===== -->
+      <div class="team-panel p-software">
+        <section class="card">
+          <h2 data-t="software_checks_heading">The 6 checks before new code joins the main version</h2>
+          <p data-t="software_skill">The Software team's skill is the <span class="skill-name">Pre-Merge Readiness Checklist</span>.</p>
+          <p class="plain-words" data-t="software_plain"><b>In plain words:</b> programmers make changes on a side copy of the program (a <b>branch</b>). Before those changes join the main version (a <b>merge</b>), someone checks them. The list of changes is called a <b>diff</b>. <b>Tests</b> are small automatic checks that the program still works.</p>
+          <ol class="checks">
+            <li>Were tests added or updated for the changed parts?</li>
+            <li>If users will notice the change, were the help pages updated?</li>
+            <li>Is any leftover debugging code still in there?</li>
+            <li>Do the change notes (commit messages) follow the team's usual style?</li>
+            <li>Are there any passwords or secret keys in the change?</li>
+            <li>Were any private files (like password files) added by mistake?</li>
+          </ol>
+        </section>
+        <section class="card">
+          <h2 data-t="software_good_heading">A good check vs a weak one</h2>
+          <p data-t="software_good_intro">For the change below, this is what we built the skill to do — and the kind of answer it must avoid.</p>
+          <ul class="examples">
+            <li class="ex good">
+              <p class="ex-say">✅ "Tests: <b>Fail</b>. This project keeps its tests in <code>__tests__</code> folders, and none of them changed."</p>
+              <p class="ex-why">Good: it judged by the project's own habits, not a guess.</p>
+            </li>
+            <li class="ex good">
+              <p class="ex-say">✅ "Change notes: <b>Fail</b>. The team writes 'feat:' or 'fix:', but these say 'wip' and 'fix stuff'."</p>
+              <p class="ex-why">Good: it compared with what the team really does.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "Tests: <b>Pass</b> — there are tests somewhere."</p>
+              <p class="ex-why">Weak: tests existing isn't the same as tests for this change.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ It writes the missing tests itself.</p>
+              <p class="ex-why">Weak: a checklist reports the gap; filling it is a separate job.</p>
+            </li>
+          </ul>
+          <p class="lesson" data-t="software_lesson">The lesson: the same honest checklist works for code — it reports, and a person decides.</p>
+        </section>
+        <section class="card" data-example="skills/software/pre-merge-readiness-checklist/examples/missing-tests-example.md">
+          <h2 data-t="asked_heading">What we gave the AI</h2>
+          <p class="try-label" data-t="asked_request">The request:</p>
+          <p class="prompt">Use the Pre-Merge Readiness Checklist on my current branch diff against main.</p>
+          <p class="try-label" data-t="software_context">A summary of the change — which files changed, and what the team noticed:</p>
+          <pre class="evidence">Changed files:
+  src/reports/export.js       (+42, -3)
+  src/reports/formatters.js   (+11, -0)
+
+Repo conventions observed:
+  - Existing tests live under src/**/__tests__/*.test.js
+  - No __tests__ changes in this diff
+  - README.md documents the "Export" menu; not touched in this diff
+  - Commit history uses Conventional Commits (feat:, fix:, chore:)
+  - This diff's commits: "wip", "more changes", "fix stuff"
+  - No console.log/debugger/pdb found in the diff
+  - No secret-like patterns found in the diff
+  - No new .env/.pem/credentials.json files added</pre>
+          <p class="muted" data-t="software_note">"+42, -3" means 42 lines added and 3 removed. "console.log", "debugger" and "pdb" are common kinds of leftover debugging code; ".env", ".pem" and "credentials.json" are common names for files holding passwords.</p>
+        </section>
+        <section class="card run" data-run="pre-merge-readiness-checklist"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
+                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-show="Show all" data-less="Show less"
+                 data-missing="This real run hasn't been added yet."
+                 data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <h2 data-t="run_heading">What the real AI said</h2>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+          <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
+          <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/software/pre-merge-readiness-checklist" rel="noopener noreferrer" data-t="software_link">See this skill's recipe card on GitHub</a>
+        </section>
+      </div>
+    </div>
+
+    <section class="card links">
+      <p class="muted" data-t="private_note">This page never talks to an AI. It shows runs that were recorded earlier, exactly as the AI wrote them.</p>
+      <a class="link-card" href="../../agents/" data-t="next_link">Next: Agents — skills that work together →</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills#using-the-install-script" rel="noopener noreferrer" data-t="install_link">Use these skills in your own AI tool</a>
+    </section>
+
+    <footer class="footer" data-t="footer">Learning should not stop.</footer>
+  </main>
+</body>
+</html>

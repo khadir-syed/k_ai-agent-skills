@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Only this site's own files and the GitHub profile photo (the tab icon)
+       may load. Nothing on this page sends data anywhere. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; connect-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="AI skills that list the questions nobody has answered yet, or find out why something went wrong — for four teams, with real recorded runs.">
+  <title>Find what's missing — k_ai-agent-skills</title>
+  <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=64">
+  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=180">
+  <link rel="stylesheet" href="../../style.css">
+  <script src="../../markdown.js" defer></script>
+  <script src="../../run.js" defer></script>
+</head>
+<body class="j-find">
+  <!-- All English text lives right here, so the page reads instantly.
+       data-t names each piece for future translations. -->
+  <main class="wrap">
+    <a class="back" href="../">← All skills</a>
+    <header class="hero">
+      <span class="badge job" data-t="badge">AI skills · Job 1</span>
+      <h1 data-t="title">Find what's missing — or find out why</h1>
+      <p class="subtitle" data-t="subtitle">Ask the questions before anyone writes the plan or fixes anything</p>
+    </header>
+
+    <section class="card">
+      <p data-t="intro_1">Imagine you tell a builder: "I want a new kitchen." A good builder doesn't start knocking down walls. First they ask: gas or electric? How many people cook here? Where do the plugs go? And they tell you which answers only you can give.</p>
+      <p data-t="intro_2">These skills are that good builder. Someone asks for something in one line — or says something went wrong. Before anyone writes a plan or fixes anything, the AI lists what's actually known, what's missing, and who could fill each gap. When something went wrong, it compares the possible causes and says how sure it is.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-t="does_heading">What they do — and what they won't do</h2>
+      <div class="two-lists">
+        <div>
+          <p class="list-head" data-t="does_label">They do:</p>
+          <ul class="ticks yes">
+            <li>List the questions nobody has answered yet</li>
+            <li>Mark every fact: written down, someone said it, a guess, or unknown</li>
+            <li>Show two readings when a request could mean two things</li>
+            <li>Say who could answer each question</li>
+            <li>When something went wrong: weigh the possible causes, and say how sure they are</li>
+          </ul>
+        </div>
+        <div>
+          <p class="list-head" data-t="wont_label">They won't:</p>
+          <ul class="ticks no">
+            <li>Write the plan (that's <a class="inline-link" href="../draft/">Job 2</a>)</li>
+            <li>Fix the problem they found</li>
+            <li>Pick an answer for you and pretend it was asked for</li>
+            <li>Call a guess a fact</li>
+          </ul>
+        </div>
+      </div>
+      <svg class="picture" viewBox="0 0 360 392" role="img" aria-labelledby="pic-title pic-desc">
+        <title id="pic-title">How it works</title>
+        <desc id="pic-desc">A vague request or a problem goes in. The AI finds what's missing and sorts every fact into four kinds: stated (written down or seen), reported (someone said it), inferred (a guess from clues) and unknown (nobody knows yet). Out comes a list of questions and who to ask, or the likely cause and how sure it is. Then it stops; nothing is written or changed.</desc>
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="tip" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+        <rect class="box" x="30" y="8" width="300" height="58" rx="12"/>
+        <text x="180" y="32" text-anchor="middle">A vague request, or a problem</text>
+        <text class="sub" x="180" y="52" text-anchor="middle">"Can we get an export?" · "Why did it flop?"</text>
+        <path class="line" d="M180,66 V90" marker-end="url(#arrow)"/>
+        <rect class="hot" x="30" y="96" width="300" height="44" rx="12"/>
+        <text x="180" y="124" text-anchor="middle">Find what's missing</text>
+        <path class="line" d="M180,140 V164" marker-end="url(#arrow)"/>
+        <rect class="box" x="30" y="170" width="142" height="52" rx="10"/>
+        <rect class="box" x="188" y="170" width="142" height="52" rx="10"/>
+        <rect class="box" x="30" y="230" width="142" height="52" rx="10"/>
+        <rect class="box" x="188" y="230" width="142" height="52" rx="10"/>
+        <rect class="solid" x="30" y="170" width="6" height="52" rx="3"/>
+        <rect class="solid" x="188" y="170" width="6" height="52" rx="3"/>
+        <rect class="solid" x="30" y="230" width="6" height="52" rx="3"/>
+        <rect class="solid" x="188" y="230" width="6" height="52" rx="3"/>
+        <text x="104" y="192" text-anchor="middle">Stated</text>
+        <text class="sub" x="104" y="210" text-anchor="middle">written down or seen</text>
+        <text x="262" y="192" text-anchor="middle">Reported</text>
+        <text class="sub" x="262" y="210" text-anchor="middle">someone said it</text>
+        <text x="104" y="252" text-anchor="middle">Inferred</text>
+        <text class="sub" x="104" y="270" text-anchor="middle">a guess from clues</text>
+        <text x="262" y="252" text-anchor="middle">Unknown</text>
+        <text class="sub" x="262" y="270" text-anchor="middle">nobody knows yet</text>
+        <path class="line" d="M180,284 V308" marker-end="url(#arrow)"/>
+        <rect class="box" x="30" y="314" width="300" height="66" rx="12"/>
+        <text x="180" y="340" text-anchor="middle">Questions, or the likely cause</text>
+        <text class="sub" x="180" y="362" text-anchor="middle">Then it stops. Nothing is written or changed.</text>
+      </svg>
+    </section>
+
+    <div class="team-pick">
+      <input type="radio" name="team" id="team-product" class="t-product" checked>
+      <input type="radio" name="team" id="team-content" class="t-content">
+      <input type="radio" name="team" id="team-social" class="t-social">
+      <input type="radio" name="team" id="team-software" class="t-software">
+      <section class="card team-card">
+        <h2 data-t="team_heading">Pick a team</h2>
+        <p data-t="team_intro">Every team has its own version of this skill. Pick one to see its request and what the real AI said.</p>
+        <div class="team-tabs">
+          <label for="team-product" class="l-product">Product</label>
+          <label for="team-content" class="l-content">Content</label>
+          <label for="team-social" class="l-social">Social media</label>
+          <label for="team-software" class="l-software">Software</label>
+        </div>
+      </section>
+
+      <!-- ===== Product ===== -->
+      <div class="team-panel p-product">
+        <section class="card">
+          <h2 data-t="product_good_heading">A good answer vs a weak one</h2>
+          <p data-t="product_skill">The Product team's skill is the <span class="skill-name">Requirements Gap Investigator</span>. For the request below, this is what we built it to do — and the kind of answer it must avoid.</p>
+          <ul class="examples">
+            <li class="ex good">
+              <p class="ex-say">✅ "Which file type — spreadsheet (CSV), PDF, or both? Which report, if the page has several? The phone app too? Should everyone see the button, or only some people?"</p>
+              <p class="ex-why">Good: it names exactly what nobody has said yet.</p>
+            </li>
+            <li class="ex good">
+              <p class="ex-say">✅ "This could mean a one-click download of what you see now, or a report emailed to you every week."</p>
+              <p class="ex-why">Good: two honest readings, and it doesn't pick one for you.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "Add a CSV export button."</p>
+              <p class="ex-why">Weak: nobody asked for CSV. It made that up and dressed it as a fact.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "This is unclear."</p>
+              <p class="ex-why">Weak: it doesn't say which parts are unclear, or who could clear them up.</p>
+            </li>
+          </ul>
+          <p class="lesson" data-t="product_lesson">The lesson: a good first step doesn't guess. It turns "I want an export" into a short list of questions for the right people.</p>
+        </section>
+        <section class="card" data-example="skills/product/requirements-gap-investigator/examples/vague-export-request.md">
+          <h2 data-t="asked_heading">What we gave the AI</h2>
+          <p class="try-label" data-t="asked_request">The request:</p>
+          <p class="prompt">Use the Requirements Gap Investigator. Sales asked for "an export button on the reports page." Figure out what's actually needed before we write it up.</p>
+          <p class="try-label" data-t="product_context">The only background it had — a chat message and a ticket:</p>
+          <pre class="evidence">Slack message from Sales lead (quoted):
+  "Can we get an export on the reports page? Customers keep asking."
+
+Linked ticket description (written by a PM):
+  "Export button for reports page."
+
+No further detail in the ticket. No mention of file format, which
+report(s), permissions, or whether this applies to the mobile app.</pre>
+        </section>
+        <section class="card run" data-run="requirements-gap-investigator"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
+                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-show="Show all" data-less="Show less"
+                 data-missing="This real run hasn't been added yet."
+                 data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <h2 data-t="run_heading">What the real AI said</h2>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+          <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
+          <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/product/requirements-gap-investigator" rel="noopener noreferrer" data-t="product_link">See this skill's recipe card on GitHub</a>
+        </section>
+      </div>
+
+      <!-- ===== Content ===== -->
+      <div class="team-panel p-content">
+        <section class="card">
+          <h2 data-t="content_good_heading">A good answer vs a weak one</h2>
+          <p data-t="content_skill">The Content team's skill is the <span class="skill-name">Content Brief Gap Investigator</span>. Marketing wants "something for launch day" about the new export. For that request, this is what we built it to do — and the kind of answer it must avoid.</p>
+          <ul class="examples">
+            <li class="ex good">
+              <p class="ex-say">✅ "Which format — a blog post, an email, a social post, or all three? For which readers? How long? And what should 'exciting' sound like?"</p>
+              <p class="ex-why">Good: it names exactly what the chat message left open.</p>
+            </li>
+            <li class="ex good">
+              <p class="ex-say">✅ "This could be a short blog post for existing customers, or a social campaign to win new users."</p>
+              <p class="ex-why">Good: two honest readings, and it doesn't pick one for you.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "Here's an exciting blog post about the export feature."</p>
+              <p class="ex-why">Weak: nobody chose a blog post or said what "exciting" means. It wrote instead of asking.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "This brief is too vague."</p>
+              <p class="ex-why">Weak: it doesn't say which parts are vague, or who could clear them up.</p>
+            </li>
+          </ul>
+          <p class="lesson" data-t="content_lesson">The lesson: before anyone writes a word, find out what's being written, for whom, and in what voice.</p>
+        </section>
+        <section class="card" data-example="skills/content/content-brief-gap-investigator/examples/vague-launch-brief.md">
+          <h2 data-t="asked_heading">What we gave the AI</h2>
+          <p class="try-label" data-t="asked_request">The request:</p>
+          <p class="prompt">Use the Content Brief Gap Investigator. Marketing asked for "something for launch day" about our new export feature. Figure out what's actually needed before we write it up.</p>
+          <p class="try-label" data-t="content_context">The only background it had — a chat message and a ticket:</p>
+          <pre class="evidence">Slack message from Marketing lead (quoted):
+  "Can we get something ready for launch day about the export
+  feature? Should feel exciting."
+
+Linked ticket description (written by a PM):
+  "Launch content for export feature."
+
+No further detail in the ticket. No mention of format (blog post?
+email? social post?), channel, target length, audience, or what
+"exciting" should mean in terms of tone.</pre>
+        </section>
+        <section class="card run" data-run="content-brief-gap-investigator"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
+                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-show="Show all" data-less="Show less"
+                 data-missing="This real run hasn't been added yet."
+                 data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <h2 data-t="run_heading">What the real AI said</h2>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+          <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
+          <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/content/content-brief-gap-investigator" rel="noopener noreferrer" data-t="content_link">See this skill's recipe card on GitHub</a>
+        </section>
+      </div>
+
+      <!-- ===== Social media ===== -->
+      <div class="team-panel p-social">
+        <section class="card">
+          <h2 data-t="social_good_heading">A good answer vs a weak one</h2>
+          <p data-t="social_skill">The Social media team's skill is the <span class="skill-name">Post Performance Investigator</span>. This one finds out <i>why</i>: the launch post on Instagram reached far fewer people than usual. This is what we built it to do — and the kind of answer it must avoid.</p>
+          <ul class="examples">
+            <li class="ex good">
+              <p class="ex-say">✅ "400 people reached, against a usual 3,000 or so — that comparison comes from the marketing lead; nobody has checked the numbers yet."</p>
+              <p class="ex-why">Good: it says where each number came from.</p>
+            </li>
+            <li class="ex good">
+              <p class="ex-say">✅ "Most likely a mix: a still picture instead of the usual video, and no paid boost this time. That's likely, not proven."</p>
+              <p class="ex-why">Good: a leading answer, and honest about how sure it is.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "Instagram changed how it shows posts."</p>
+              <p class="ex-why">Weak: nothing in the facts says so. It made up a cause and ignored the real differences.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "Here's a better post to try instead."</p>
+              <p class="ex-why">Weak: its job was to find out why, not to write a new post.</p>
+            </li>
+          </ul>
+          <p class="lesson" data-t="social_lesson">The lesson: "why did it flop?" deserves evidence, not the first theory that sounds right.</p>
+        </section>
+        <section class="card" data-example="skills/socialmedia/post-performance-investigator/examples/underperforming-launch-post.md">
+          <h2 data-t="asked_heading">What we gave the AI</h2>
+          <p class="try-label" data-t="asked_request">The request:</p>
+          <p class="prompt">Use the Post Performance Investigator. Our export-feature launch post on Instagram flopped compared to usual. Figure out why.</p>
+          <p class="try-label" data-t="social_context">The only background it had — what the team knew about the post:</p>
+          <pre class="evidence">Post: Instagram feed post announcing the export feature, posted
+Tuesday 9am local time.
+
+Reported metric: reach 400, versus a typical post's reach of ~3,000
+(average of last 10 posts, per the marketing lead).
+
+Observed: the post was a single static image with a two-line
+caption and no hashtags. The last 10 posts averaged 4-6 hashtags
+and a short video/carousel format.
+
+Observed: no paid promotion was applied to this post; three of the
+last 10 posts had.
+
+Unknown: whether Instagram's algorithm changed recently, and
+whether any competing content was posted by others that morning.</pre>
+          <p class="muted" data-t="social_note">"Reach" is how many different people saw the post. A "carousel" is a post you swipe through, picture by picture.</p>
+        </section>
+        <section class="card run" data-run="post-performance-investigator"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
+                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-show="Show all" data-less="Show less"
+                 data-missing="This real run hasn't been added yet."
+                 data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <h2 data-t="run_heading">What the real AI said</h2>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+          <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
+          <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/socialmedia/post-performance-investigator" rel="noopener noreferrer" data-t="social_link">See this skill's recipe card on GitHub</a>
+        </section>
+      </div>
+
+      <!-- ===== Software ===== -->
+      <div class="team-panel p-software">
+        <section class="card">
+          <h2 data-t="software_good_heading">A good answer vs a weak one</h2>
+          <p data-t="software_skill">The Software team's skill is the <span class="skill-name">Root Cause Investigator</span>. This one also finds out <i>why</i>: the Orders page says "No orders found", yet three orders arrived. This is what we built it to do — and the kind of answer it must avoid.</p>
+          <p class="plain-words" data-t="software_plain"><b>In plain words:</b> a web page asks the company's server for the list of orders. The server answers in a tidy text format (called JSON). Last week, the server team renamed that list from <code>orders</code> to <code>items</code> — like relabelling a folder in a shared filing cabinet without telling the people who use it.</p>
+          <ul class="examples">
+            <li class="ex good">
+              <p class="ex-say">✅ "The server sends the orders in a list called <code>items</code>, but the page looks for one called <code>orders</code>, finds nothing, and shows 'No orders found'."</p>
+              <p class="ex-why">Good: it points to the exact spot where things go wrong.</p>
+            </li>
+            <li class="ex good">
+              <p class="ex-say">✅ "Probable, not proven: nobody looked at the page's code or the live site. Next check, not done: see which name the page reads."</p>
+              <p class="ex-why">Good: honest about how sure it is, and it changes nothing.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "The website is broken."</p>
+              <p class="ex-why">Weak: it names a big area, not what actually went wrong.</p>
+            </li>
+            <li class="ex weak">
+              <p class="ex-say">❌ "Just rename <code>orders</code> to <code>items</code>."</p>
+              <p class="ex-why">Weak: it jumped to a fix. It was asked to find the cause and change nothing.</p>
+            </li>
+          </ul>
+          <p class="lesson" data-t="software_lesson">The lesson: first find where it goes wrong and how sure you are. Fixing it is a separate step, with your go-ahead.</p>
+        </section>
+        <section class="card" data-example="skills/software/root-cause-investigator/examples/ui-api-field-mismatch.md">
+          <h2 data-t="asked_heading">What we gave the AI</h2>
+          <p class="try-label" data-t="asked_request">The request:</p>
+          <p class="prompt">Use the Root Cause Investigator. The Orders page says "No orders found," but the browser network response contains three orders. Diagnose the problem and do not change anything.</p>
+          <p class="try-label" data-t="software_context">The only background it had — what the server sent, how the page works, and a note about last week's change:</p>
+          <pre class="evidence">Treat the following as supplied evidence. A real investigation should verify equivalent evidence in the available environment.
+
+### API response
+
+```json
+{
+  "items": [
+    { "id": "A-101", "status": "ready" },
+    { "id": "A-102", "status": "pending" },
+    { "id": "A-103", "status": "ready" }
+  ],
+  "total": 3
+}
+```
+
+### UI behaviour description
+
+The page reads the response body successfully. It renders an order row for every entry in a property named `orders`. When `orders.length` is zero, it shows "No orders found."
+
+### Recent change note
+
+The API response contract was changed last week from an `orders` property to an `items` property. No corresponding UI change is recorded in the evidence packet.</pre>
+          <p class="muted" data-t="software_note">"API" is the server's side of the conversation; "UI" is the page you see. The <code>###</code> and <code>```</code> marks are just how the example file labels its parts.</p>
+        </section>
+        <section class="card run" data-run="root-cause-investigator"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
+                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-show="Show all" data-less="Show less"
+                 data-missing="This real run hasn't been added yet."
+                 data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <h2 data-t="run_heading">What the real AI said</h2>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+          <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
+          <p class="plain-words" data-t="software_notice"><b>Worth noticing:</b> in this run the AI called the cause "established", with "High" confidence. It found the right cause, but nobody looked at the page's actual code — so "probable", as in the good answer above, would have been more honest. Even a good answer is worth reading with care.</p>
+          <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/software/root-cause-investigator" rel="noopener noreferrer" data-t="software_link">See this skill's recipe card on GitHub</a>
+        </section>
+      </div>
+    </div>
+
+    <section class="card links">
+      <p class="muted" data-t="private_note">This page never talks to an AI. It shows runs that were recorded earlier, exactly as the AI wrote them.</p>
+      <a class="link-card" href="../draft/" data-t="next_link">Next: Job 2 — Write me a first draft →</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills#using-the-install-script" rel="noopener noreferrer" data-t="install_link">Use these skills in your own AI tool</a>
+    </section>
+
+    <footer class="footer" data-t="footer">Learning should not stop.</footer>
+  </main>
+</body>
+</html>

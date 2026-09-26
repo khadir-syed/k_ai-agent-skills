@@ -220,3 +220,32 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline
   background: none; border: 0; padding: 0; margin-top: 6px; cursor: pointer;
   color: var(--amber); font: inherit; font-size: 14px; font-weight: 700;
 }
+
+/* Team picker on the skill pages: plain radio buttons, so it works with no
+   scripts. Each team's panel shows only while its button is picked. */
+.team-pick > input { position: absolute; opacity: 0; pointer-events: none; }
+.team-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.team-tabs label {
+  padding: 6px 14px; border-radius: 9999px; cursor: pointer; font-size: 14px; font-weight: 700;
+  background: var(--bg); border: 1px solid var(--line); color: var(--soft);
+}
+.team-tabs label:hover { border-color: var(--job); }
+.team-panel { display: none; }
+.t-product:checked ~ .p-product, .t-content:checked ~ .p-content,
+.t-social:checked ~ .p-social, .t-software:checked ~ .p-software { display: block; }
+.t-product:checked ~ .team-card .l-product, .t-content:checked ~ .team-card .l-content,
+.t-social:checked ~ .team-card .l-social, .t-software:checked ~ .team-card .l-software {
+  background: var(--job); border-color: var(--job); color: var(--bg);
+}
+.t-product:focus-visible ~ .team-card .l-product, .t-content:focus-visible ~ .team-card .l-content,
+.t-social:focus-visible ~ .team-card .l-social, .t-software:focus-visible ~ .team-card .l-software {
+  outline: 2px solid var(--amber); outline-offset: 2px;
+}
+.skill-name { color: var(--job); font-weight: 800; }
+.plain-words { border-left: 3px solid var(--job); padding: 8px 12px; background: var(--bg); border-radius: 8px; font-size: 14px; color: var(--soft); }
+
+/* Home page: the three parts of the repo */
+.part-card { --job: var(--amber); }
+.part-card.soon { cursor: default; }
+.part-card.soon:hover { border-color: var(--line); background: var(--card); }
+.part-card.soon:hover .job-title { color: var(--text); }

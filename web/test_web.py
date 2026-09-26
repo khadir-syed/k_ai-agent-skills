@@ -3,6 +3,7 @@ the one in the repo's example file, every recorded run must be labelled and
 format cleanly, and the pages must stay safe. Runs instantly, no network.
 Run from the repo root with: python3 web/test_web.py
 """
+import glob
 import html
 import json
 import os
@@ -13,8 +14,12 @@ import subprocess
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 REPO_URL = "https://github.com/khadir-syed/k_ai-agent-skills/tree/main/"
-JOBS = ["find", "draft", "check", "together"]
-PAGES = ["index.html"] + [f"{job}/index.html" for job in JOBS]
+JOBS = ["find", "draft", "check"]  # the skill pages, under skills/
+TEAMS = ["product", "content", "social", "software"]
+RUN_PAGES = [f"skills/{job}/index.html" for job in JOBS] + ["agents/together/index.html"]
+PAGES = ["index.html", "skills/index.html", "agents/index.html"] + RUN_PAGES
+# Old addresses from before the pages moved; each is now a tiny redirect.
+MOVED = {"find": "skills/find", "draft": "skills/draft", "check": "skills/check", "together": "agents/together"}
 problems = []
 
 
@@ -36,7 +41,7 @@ def squash(text):
 
 
 # ---- Safety: the same rules on every page ------------------------------------
-for name in PAGES + ["../index.html"]:
+for name in PAGES + ["../index.html"] + [f"{old}/index.html" for old in MOVED]:
     page = read(name)
     csp = re.search(r'http-equiv="Content-Security-Policy"\s+content="([^"]+)"', page)
     check(csp and "default-src 'none'" in csp.group(1), f"{name}: strict Content-Security-Policy missing")
@@ -48,7 +53,7 @@ for name in PAGES + ["../index.html"]:
     check(not re.search(r"\son[a-z]+=", page), f"{name}: inline event handler found")
     # Every link to this site's own files must lead somewhere real.
     folder = os.path.dirname(os.path.join(HERE, name))
-    for target in re.findall(r'(?:href|src)="([^"#:]+)"', page):
+    for target in re.findall(r'<[a-z][^>]*?\s(?:href|src)="([^"#:]+)"', page):
         path = os.path.normpath(os.path.join(folder, html.unescape(target)))
         if os.path.isdir(path):
             path = os.path.join(path, "index.html")
@@ -57,11 +62,29 @@ for name in PAGES + ["../index.html"]:
     for target in re.findall(r'href="' + re.escape(REPO_URL) + r'([^"#]+)"', page):
         check(os.path.isdir(os.path.join(ROOT, target)), f"{name}: GitHub link to missing folder {target}")
 
-# ---- Home: one card per job page, in story order ------------------------------
-cards = re.findall(r'<a class="job-card j-(\w+)" href="(\w+)/">', read("index.html"))
-check(cards == [(job, job) for job in JOBS], f"home cards {cards} don't match the job pages {JOBS}")
+# ---- Home -> Skills and Agents; Skills -> one card per job page ---------------
+home = read("index.html")
+check('href="skills/"' in home and 'href="agents/"' in home, "home must link to the Skills and Agents pages")
+cards = re.findall(r'<a class="job-card j-(\w+)" href="(\w+)/">', read("skills/index.html"))
+check(cards == [(job, job) for job in JOBS], f"skills page cards {cards} don't match the job pages {JOBS}")
 for job in JOBS:
-    check(f'<body class="j-{job}">' in read(f"{job}/index.html"), f"{job}: page colour class missing")
+    check(f'<body class="j-{job}">' in read(f"skills/{job}/index.html"), f"{job}: page colour class missing")
+for old, new in MOVED.items():
+    check(f'url=../{new}/"' in read(f"{old}/index.html"), f"{old}/: should redirect to {new}/")
+
+# ---- Skill pages: a tab per team, each with one request and one real run ------
+shown_runs = []
+for job in JOBS:
+    page = read(f"skills/{job}/index.html")
+    panels = re.split(r'<div class="team-panel p-(\w+)">', page)[1:]
+    check([t for t in panels[0::2]] == TEAMS, f"{job}: team tabs should be {TEAMS}")
+    for team, panel in zip(panels[0::2], panels[1::2]):
+        check(len(re.findall(r"data-example=", panel)) == 1 and len(re.findall(r"data-run=", panel)) == 1,
+              f"{job}/{team}: needs exactly one request and one run")
+        check(f'class="l-{team}"' in page and f'class="t-{team}"' in page, f"{job}/{team}: tab button missing")
+    shown_runs += re.findall(r'data-run="([^"]+)"', page)
+skill_folders = sorted(os.path.basename(p) for p in glob.glob(os.path.join(ROOT, "skills", "*", "*")) if os.path.isdir(p))
+check(sorted(shown_runs) == skill_folders, f"every skill should be on a page once:\n  pages: {sorted(shown_runs)}\n  repo:  {skill_folders}")
 
 
 # ---- What we gave the AI == the repo's example files --------------------------
@@ -70,12 +93,15 @@ def example_parts(path):
     prompt = re.search(r"## User prompt\s+((?:>.*\n?)+)", text).group(1)
     prompt = squash(re.sub(r"^>\s?", "", prompt, flags=re.M))
     block = re.search(r"```text\n(.*?)\n```", text, re.S)
+    # root-cause-investigator has an "Evidence packet" section instead of a text block
+    block = block or re.search(r"## Evidence packet\n\n(.*?)\n\n## ", text, re.S)
     return prompt, block.group(1) if block else None
 
 
 examples = {}  # run name -> example file, for the run header check below
-for job in JOBS:
-    page = read(f"{job}/index.html")
+for name in RUN_PAGES:
+    job = name.split("/")[1]
+    page = read(name)
     blocks = re.findall(r'data-example="([^"]+)">(.*?)</(?:section|div)>', page, re.S)
     check(blocks, f"{job}: no request shown")
     for path, block in blocks:
@@ -103,8 +129,12 @@ for (const name of JSON.parse(process.argv[1])) {
   const { meta, turns } = Runs.parse(fs.readFileSync(`web/runs/${name}.md`, "utf8"));
   out[name] = { meta, turns: turns.map((t) => {
     if (t.who === "YOU") return { who: t.who, text: t.text };
-    const shown = Markdown.tree(t.text).map(Markdown.textOf).join("");
-    return { who: t.who, text: t.text, shown };
+    const tree = Markdown.tree(t.text);
+    const shown = tree.map(Markdown.textOf).join("");
+    // The same, with `code` blanked: a code snippet may quote "# export" on purpose.
+    const noCode = (n) => typeof n === "string" ? n : n.tag === "code" ? { ...n, children: ["·"] } : { ...n, children: n.children.map(noCode) };
+    const prose = tree.map(noCode).map(Markdown.textOf).join("");
+    return { who: t.who, text: t.text, shown, prose };
   }) };
 }
 console.log(JSON.stringify(out));
@@ -141,7 +171,7 @@ if shutil.which("node"):
                 source = re.sub(r"(?m)^\s*\d+\.\s", " ", t["text"])
                 check(words(t["shown"]) == words(re.sub(r"```\w*|<br\s*/?>|[`*#|>]", " ", source)),
                       f"{name}: formatting changed the words of a turn")
-                shown_lines = [line.strip() for line in t["shown"].split("\n")]
+                shown_lines = [line.strip() for line in t["prose"].split("\n")]
                 # (a "#" table heading is fine; "# Title" is an unformatted heading)
                 check(not any(re.match(r"#{1,6}\s|\||```", line) for line in shown_lines),
                       f"{name}: raw Markdown symbols left on screen")

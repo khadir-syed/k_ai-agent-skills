@@ -3,150 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Only this site's own files and the GitHub profile photo (the tab icon)
-       may load. Nothing on this page sends data anywhere. -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; script-src 'self'; connect-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
-  <meta name="referrer" content="no-referrer">
-  <meta name="description" content="An AI skill that lists the questions nobody has answered yet, before anyone writes a plan — with a real recorded run.">
-  <title>Find what's missing — k_ai-agent-skills</title>
+  <!-- This page moved to web/skills/find/; old links still land in the right place. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="refresh" content="0; url=../skills/find/">
+  <title>k_ai-agent-skills</title>
   <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=64">
-  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=180">
   <link rel="stylesheet" href="../style.css">
-  <script src="../markdown.js" defer></script>
-  <script src="../run.js" defer></script>
 </head>
-<body class="j-find">
-  <!-- All English text lives right here, so the page reads instantly.
-       data-t names each piece for future translations. -->
+<body>
   <main class="wrap">
-    <a class="back" href="../">← All jobs</a>
-    <header class="hero">
-      <span class="badge job" data-t="badge">AI skills · Job 1 · Requirements Gap Investigator</span>
-      <h1 data-t="title">Find what's missing</h1>
-      <p class="subtitle" data-t="subtitle">Ask the questions before anyone writes the plan</p>
-    </header>
-
-    <section class="card">
-      <p data-t="intro_1">Imagine you tell a builder: "I want a new kitchen." A good builder doesn't start knocking down walls. First they ask: gas or electric? How many people cook here? Where do the plugs go? And they tell you which answers only you can give.</p>
-      <p data-t="intro_2">This skill is that good builder, for a feature request. Someone asks for something in one line. Before anyone writes a plan, the AI lists what's actually known, what's missing, and who could fill each gap.</p>
-    </section>
-
-    <section class="card">
-      <h2 data-t="does_heading">What it does — and what it won't do</h2>
-      <div class="two-lists">
-        <div>
-          <p class="list-head" data-t="does_label">It does:</p>
-          <ul class="ticks yes">
-            <li>Lists the questions nobody has answered yet</li>
-            <li>Marks every fact: written down, someone said it, a guess, or unknown</li>
-            <li>Shows two readings when the request could mean two things</li>
-            <li>Says who could answer each question</li>
-          </ul>
-        </div>
-        <div>
-          <p class="list-head" data-t="wont_label">It won't:</p>
-          <ul class="ticks no">
-            <li>Write the plan (that's <a class="inline-link" href="../draft/">Job 2</a>)</li>
-            <li>Pick an answer for you and pretend it was asked for</li>
-            <li>Settle a disagreement between people for you</li>
-          </ul>
-        </div>
-      </div>
-      <svg class="picture" viewBox="0 0 360 392" role="img" aria-labelledby="pic-title pic-desc">
-        <title id="pic-title">How it works</title>
-        <desc id="pic-desc">A vague request goes in. The AI finds what's missing and sorts every fact into four kinds: stated (written down), reported (someone said it), inferred (a guess from clues) and unknown (nobody knows yet). Out comes a list of questions and who to ask. Then it stops; nothing is written.</desc>
-        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="tip" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-        <rect class="box" x="30" y="8" width="300" height="58" rx="12"/>
-        <text x="180" y="32" text-anchor="middle">A vague request</text>
-        <text class="sub" x="180" y="52" text-anchor="middle">"Can we get an export?"</text>
-        <path class="line" d="M180,66 V90" marker-end="url(#arrow)"/>
-        <rect class="hot" x="30" y="96" width="300" height="44" rx="12"/>
-        <text x="180" y="124" text-anchor="middle">Find what's missing</text>
-        <path class="line" d="M180,140 V164" marker-end="url(#arrow)"/>
-        <rect class="box" x="30" y="170" width="142" height="52" rx="10"/>
-        <rect class="box" x="188" y="170" width="142" height="52" rx="10"/>
-        <rect class="box" x="30" y="230" width="142" height="52" rx="10"/>
-        <rect class="box" x="188" y="230" width="142" height="52" rx="10"/>
-        <rect class="solid" x="30" y="170" width="6" height="52" rx="3"/>
-        <rect class="solid" x="188" y="170" width="6" height="52" rx="3"/>
-        <rect class="solid" x="30" y="230" width="6" height="52" rx="3"/>
-        <rect class="solid" x="188" y="230" width="6" height="52" rx="3"/>
-        <text x="104" y="192" text-anchor="middle">Stated</text>
-        <text class="sub" x="104" y="210" text-anchor="middle">written down</text>
-        <text x="262" y="192" text-anchor="middle">Reported</text>
-        <text class="sub" x="262" y="210" text-anchor="middle">someone said it</text>
-        <text x="104" y="252" text-anchor="middle">Inferred</text>
-        <text class="sub" x="104" y="270" text-anchor="middle">a guess from clues</text>
-        <text x="262" y="252" text-anchor="middle">Unknown</text>
-        <text class="sub" x="262" y="270" text-anchor="middle">nobody knows yet</text>
-        <path class="line" d="M180,284 V308" marker-end="url(#arrow)"/>
-        <rect class="box" x="30" y="314" width="300" height="66" rx="12"/>
-        <text x="180" y="340" text-anchor="middle">Questions + who to ask</text>
-        <text class="sub" x="180" y="362" text-anchor="middle">Then it stops. Nothing is written.</text>
-      </svg>
-    </section>
-
-    <section class="card">
-      <h2 data-t="good_heading">A good answer vs a weak one</h2>
-      <p data-t="good_intro">For the request below, this is what we built the skill to do — and the kind of answer it must avoid.</p>
-      <ul class="examples">
-        <li class="ex good">
-          <p class="ex-say">✅ "Which file type — spreadsheet (CSV), PDF, or both? Which report, if the page has several? The phone app too? Should everyone see the button, or only some people?"</p>
-          <p class="ex-why">Good: it names exactly what nobody has said yet.</p>
-        </li>
-        <li class="ex good">
-          <p class="ex-say">✅ "This could mean a one-click download of what you see now, or a report emailed to you every week."</p>
-          <p class="ex-why">Good: two honest readings, and it doesn't pick one for you.</p>
-        </li>
-        <li class="ex weak">
-          <p class="ex-say">❌ "Add a CSV export button."</p>
-          <p class="ex-why">Weak: nobody asked for CSV. It made that up and dressed it as a fact.</p>
-        </li>
-        <li class="ex weak">
-          <p class="ex-say">❌ "This is unclear."</p>
-          <p class="ex-why">Weak: it doesn't say which parts are unclear, or who could clear them up.</p>
-        </li>
-      </ul>
-      <p class="lesson" data-t="lesson">The lesson: a good first step doesn't guess. It turns "I want an export" into a short list of questions for the right people.</p>
-    </section>
-
-    <section class="card" id="asked" data-example="skills/product/requirements-gap-investigator/examples/vague-export-request.md">
-      <h2 data-t="asked_heading">What we gave the AI</h2>
-      <p class="try-label" data-t="asked_request">The request:</p>
-      <p class="prompt">Use the Requirements Gap Investigator. Sales asked for "an export button on the reports page." Figure out what's actually needed before we write it up.</p>
-      <p class="try-label" data-t="asked_context">The only background it had — a chat message and a ticket:</p>
-      <pre class="evidence">Slack message from Sales lead (quoted):
-  "Can we get an export on the reports page? Customers keep asking."
-
-Linked ticket description (written by a PM):
-  "Export button for reports page."
-
-No further detail in the ticket. No mention of file format, which
-report(s), permissions, or whether this applies to the mobile app.</pre>
-    </section>
-
-    <section class="card run" id="run" data-run="requirements-gap-investigator"
-             data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
-             data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
-             data-show="Show all" data-less="Show less"
-             data-missing="This real run hasn't been added yet."
-             data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
-      <h2 data-t="run_heading">What the real AI said</h2>
-      <p class="run-meta"></p>
-      <ol class="turns"></ol>
-      <p class="run-status muted" role="status">Loading the recorded run…</p>
-      <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
-    </section>
-
-    <section class="card links">
-      <p class="muted" data-t="private_note">This page never talks to an AI. It shows a run that was recorded earlier, exactly as the AI wrote it.</p>
-      <a class="link-card" href="../draft/" data-t="next_link">Next: Job 2 — Write me a first draft →</a>
-      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/product/requirements-gap-investigator" rel="noopener noreferrer" data-t="skill_link">See this skill's recipe card on GitHub</a>
-      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills#using-the-install-script" rel="noopener noreferrer" data-t="install_link">Use it in your own AI tool</a>
-    </section>
-
-    <footer class="footer" data-t="footer">Learning should not stop.</footer>
+    <p class="card">This page has moved… If nothing happens, <a class="link-card" href="../skills/find/">open its new page</a>.</p>
   </main>
 </body>
 </html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- No scripts on this page: only this site's own files and the GitHub
+       profile photo (the tab icon) may load. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="What an AI skill is, in plain words, and the three jobs skills do for four teams — with real recorded runs.">
+  <title>AI skills — k_ai-agent-skills</title>
+  <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=64">
+  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=180">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <main class="wrap">
+    <a class="back" href="../">← Home</a>
+    <header class="hero">
+      <span class="badge job" data-t="badge">k_ai-agent-skills · Part 1</span>
+      <h1 data-t="title">Skills</h1>
+      <p class="subtitle" data-t="subtitle">Recipe cards for an AI helper</p>
+    </header>
+
+    <section class="card">
+      <p data-t="intro_1">Imagine giving a new team member a recipe card: "When someone asks for X, do these steps, and never do that." They follow it the same way every time. A <b>skill</b> is that recipe card — for an AI helper.</p>
+      <p data-t="intro_2">A skill is just a text file. You add it to an AI tool (like Claude Code, Codex or GitHub Copilot), then ask for it by name: "Use the Requirements Gap Investigator on this." The AI follows the card's steps and rules for that request.</p>
+      <p data-t="intro_3">Every page here shows a real run: what we asked a real AI, and exactly what it answered (only personal details are ever taken out). No coding needed.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-t="story_heading">Three jobs, four teams</h2>
+      <p data-t="story_intro">Sales asks for "an export button on the reports page". That's all they say. The skills here help four teams — Product, Content, Social media and Software — take a request like that from a vague idea to something ready to go, in three jobs:</p>
+      <svg class="picture" viewBox="0 0 360 150" role="img" aria-labelledby="story-title story-desc">
+        <title id="story-title">Three jobs</title>
+        <desc id="story-desc">Job 1 finds what's missing, job 2 writes a first draft, job 3 checks if it's ready.</desc>
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="tip" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+        <circle class="c-find" cx="62" cy="46" r="30"/>
+        <circle class="c-draft" cx="180" cy="46" r="30"/>
+        <circle class="c-check" cx="298" cy="46" r="30"/>
+        <text class="on-job" x="62" y="53" text-anchor="middle">1</text>
+        <text class="on-job" x="180" y="53" text-anchor="middle">2</text>
+        <text class="on-job" x="298" y="53" text-anchor="middle">3</text>
+        <path class="line" d="M96,46 H142" marker-end="url(#arrow)"/>
+        <path class="line" d="M214,46 H260" marker-end="url(#arrow)"/>
+        <text class="sub" x="62" y="102" text-anchor="middle"><tspan x="62">Find what's</tspan><tspan x="62" dy="16">missing</tspan></text>
+        <text class="sub" x="180" y="102" text-anchor="middle"><tspan x="180">Write a first</tspan><tspan x="180" dy="16">draft</tspan></text>
+        <text class="sub" x="298" y="102" text-anchor="middle"><tspan x="298">Check if it's</tspan><tspan x="298" dy="16">ready</tspan></text>
+      </svg>
+      <p data-t="story_teams">Each team has its own skill for each job — 12 skills in all. On every job page, pick a team to see its version.</p>
+    </section>
+
+    <nav aria-label="Jobs">
+      <a class="job-card j-find" href="find/">
+        <span class="job-num">Job 1</span>
+        <span class="job-title" data-t="find_title">Find what's missing — or find out why</span>
+        <span class="job-line" data-t="find_line">Before anyone writes a plan or fixes anything, the AI lists the questions nobody has answered yet — or weighs what most likely went wrong.</span>
+      </a>
+      <a class="job-card j-draft" href="draft/">
+        <span class="job-num">Job 2</span>
+        <span class="job-title" data-t="draft_title">Write me a first draft</span>
+        <span class="job-line" data-t="draft_line">The AI writes a first draft from what you give it, shows it to you, and only saves it once you say yes.</span>
+      </a>
+      <a class="job-card j-check" href="check/">
+        <span class="job-num">Job 3</span>
+        <span class="job-title" data-t="check_title">Is it ready to go?</span>
+        <span class="job-line" data-t="check_line">Like a pilot's checklist before take-off: the AI runs the same 6 checks every time. You still decide whether it goes out.</span>
+      </a>
+    </nav>
+
+    <section class="card links">
+      <a class="link-card" href="../agents/" data-t="agents_link">Next: Agents — skills that work together →</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills" rel="noopener noreferrer" data-t="repo_link">See all the skills on GitHub</a>
+    </section>
+
+    <footer class="footer" data-t="footer">Learning should not stop.</footer>
+  </main>
+</body>
+</html>

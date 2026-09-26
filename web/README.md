@@ -2,12 +2,16 @@
 
 **Try it:** https://khadir-syed.github.io/k_ai-agent-skills/web/
 
-Right now:
+The site follows the repo's three parts:
 
-- **Job 1 — Find what's missing:** https://khadir-syed.github.io/k_ai-agent-skills/web/find/
-- **Job 2 — Write me a first draft:** https://khadir-syed.github.io/k_ai-agent-skills/web/draft/
-- **Job 3 — Is it ready to go?:** https://khadir-syed.github.io/k_ai-agent-skills/web/check/
-- **Job 4 — Do the whole job with me:** https://khadir-syed.github.io/k_ai-agent-skills/web/together/
+- **Skills:** https://khadir-syed.github.io/k_ai-agent-skills/web/skills/
+  - Job 1 — Find what's missing, or find out why: [`skills/find/`](skills/find/)
+  - Job 2 — Write me a first draft: [`skills/draft/`](skills/draft/)
+  - Job 3 — Is it ready to go?: [`skills/check/`](skills/check/)
+- **Agents:** https://khadir-syed.github.io/k_ai-agent-skills/web/agents/
+  - Product team — Do the whole job with me: [`agents/together/`](agents/together/)
+  - Content and Software agents: page coming soon
+- **Orchestrators:** explained on the home page; page coming soon
 
 ## What is this?
 
@@ -17,16 +21,19 @@ instead. Each page takes one job, explains it with an everyday comparison,
 draws it as a picture, and then shows a **real recorded run**: exactly what
 we asked a real AI, and exactly what it answered.
 
-The pages are sorted by the job you need done, not by how the repo's folders
-are laid out. They follow one story: Sales asks for "an export button", and
-each job moves it one step closer to launch.
+The skill pages are sorted by the job you need done, not by how the repo's
+folders are laid out. Each job page explains the job once, then has a tab
+per team (Product, Content, Social media, Software) with that team's skill,
+its request and its real run. They follow one story: Sales asks for "an
+export button", and each job moves it one step closer to launch.
 
 ```mermaid
-flowchart LR
-    A["'Can we get an export?'"] --> B["Job 1<br/>Find what's missing"]
-    B --> C["Job 2<br/>Write a first draft"]
-    C --> D["Job 3<br/>Is it ready?"]
-    E["Job 4: an agent does<br/>jobs 1 → 2 → 3 for you"] -.-> B
+flowchart TD
+    H["Home: the repo in 3 parts"] --> S["Skills"]
+    H --> A["Agents"]
+    H -.-> O["Orchestrators<br/>(coming soon)"]
+    S --> F["Job 1<br/>Find what's missing"] & D["Job 2<br/>Write a first draft"] & C["Job 3<br/>Is it ready?"]
+    A --> T["Product agents:<br/>jobs 1 → 2 → 3 for you"]
 ```
 
 Good to know:
@@ -44,12 +51,15 @@ Good to know:
 
 | File | What it does |
 |---|---|
-| `index.html` | Home page: the story and one card per job |
-| `find/`, `draft/`, `check/`, `together/` | One page per job. All English text is written right in the page |
+| `index.html` | Home page: what skills, agents and orchestrators are |
+| `skills/index.html` | What a skill is, and one card per job |
+| `skills/find/`, `skills/draft/`, `skills/check/` | One page per job, with a tab per team. All English text is written right in the page |
+| `agents/index.html`, `agents/together/` | What an agent is, and the Product agent pair side by side |
+| `find/`, `draft/`, `check/`, `together/` | Tiny redirects from the old addresses, so links shared earlier still work |
 | `runs/<skill-name>.md` | The recorded runs (see below) |
 | `run.js` | Loads a recorded run and shows it: the start of a long answer, the rest behind "Show all" |
 | `markdown.js` | Turns the AI's formatting symbols (`##`, `**`, tables) into headings, bold and tables — safely, as plain text only. Copied from k_ai-basics, plus code blocks, `code` and quotes |
-| `style.css` | Colours match https://khadir-syed.github.io; each job has its own warm accent |
+| `style.css` | Colours match https://khadir-syed.github.io; each job has its own warm accent. The team tabs are plain radio buttons styled here, so they need no scripts |
 | `test_web.py` | The self-check (below) |
 
 The pictures are drawn right inside each page (inline SVG) and coloured by
@@ -65,9 +75,9 @@ your time zone, names, emails): replace them with something plain like
 `launch-brief.md` or a visible `[time zone removed]`, and say so on the page.
 
 ```text
-Date: 2026-09-27
+Date: 2026-09-26
 Tool: Codex CLI 0.154.0
-Model: groq/openai/gpt-oss-120b
+Model: gpt-5.6-sol
 Example: skills/product/requirements-gap-investigator/examples/vague-export-request.md
 
 <the AI's reply, unedited apart from personal details>
@@ -87,7 +97,9 @@ before each turn:
 
 To record one: use a fresh clone, run `install.sh`, start a new session,
 and paste the example file's prompt and background (not its "Expected…"
-section — that would give the answer away).
+section — that would give the answer away). Keep the repo's `AGENTS.md`
+(or `CLAUDE.md`) in the folder you record in: it tells the AI to follow the
+invoked skill rather than any personal default style you've set up.
 
 ## Check it before publishing
 
@@ -102,6 +114,8 @@ It checks, with no network:
 - every page keeps its strict safety rules (no inline scripts or styles, no
   scripts from other sites) and every link leads somewhere real;
 - each request shown on a page matches the repo's example file word for word;
+- every skill in `skills/` has its own tab, with one request and one run;
+- the old addresses still redirect to the moved pages;
 - every recorded run exists, has its Date, Tool, Model and Example lines,
   and is shown without losing words or leaving raw `##` / `|` symbols
   (this part needs `node`);
