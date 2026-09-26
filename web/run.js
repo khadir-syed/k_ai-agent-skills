@@ -109,7 +109,7 @@ const Runs = (() => {
     }
     const stops = el.querySelector(".stops");
     const asked = turns.filter((t) => t.who === "YOU").length;
-    if (stops) stops.textContent = asked === 1 ? labels.stopsOne : labels.stops.replace("{n}", asked);
+    if (stops) stops.textContent = asked === 0 && labels.stopsNone ? labels.stopsNone : asked === 1 ? labels.stopsOne : labels.stops.replace("{n}", asked);
   }
 
   async function loadAll() {

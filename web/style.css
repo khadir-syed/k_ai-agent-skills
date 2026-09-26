@@ -165,6 +165,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 .try-label { font-weight: 700; margin: 8px 0 6px; }
+[data-example] + [data-example] { margin-top: 16px; } /* two requests in a row, e.g. controlled then autonomous */
+.command { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; word-break: break-word; }
 
 /* A recorded run: each turn, the AI's answers cut short until "Show all" */
 .run-meta { font-size: 14px; color: var(--muted); }
@@ -183,6 +185,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline
 .side-by-side { display: grid; gap: 16px; }
 @media (min-width: 720px) { .side-by-side { grid-template-columns: 1fr 1fr; } }
 .side-by-side > * { min-width: 0; }
+.side-by-side ~ p { margin-top: 16px; } /* a note after the runs, same gap as between them */
 .side-title { font-size: 16px; font-weight: 800; margin: 0 0 6px; }
 
 /* AI answers, formatted by markdown.js; "clamped" shows only the first part

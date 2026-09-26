@@ -10,7 +10,8 @@ The site follows the repo's three parts:
   - Job 3 — Is it ready to go?: [`skills/check/`](skills/check/)
 - **Agents:** https://khadir-syed.github.io/k_ai-agent-skills/web/agents/
   - Product team — Do the whole job with me: [`agents/together/`](agents/together/)
-  - Content and Software agents: page coming soon
+  - Content team — Get a post ready to publish: [`agents/content/`](agents/content/)
+  - Software team — Find and fix a bug: [`agents/software/`](agents/software/)
 - **Orchestrators:** explained on the home page; page coming soon
 
 ## What is this?
@@ -33,7 +34,7 @@ flowchart TD
     H --> A["Agents"]
     H -.-> O["Orchestrators<br/>(coming soon)"]
     S --> F["Job 1<br/>Find what's missing"] & D["Job 2<br/>Write a first draft"] & C["Job 3<br/>Is it ready?"]
-    A --> T["Product agents:<br/>jobs 1 → 2 → 3 for you"]
+    A --> T["Agent pairs for Product, Content, Software:<br/>jobs 1 → 2 → 3 for you"]
 ```
 
 Good to know:
@@ -54,7 +55,7 @@ Good to know:
 | `index.html` | Home page: what skills, agents and orchestrators are |
 | `skills/index.html` | What a skill is, and one card per job |
 | `skills/find/`, `skills/draft/`, `skills/check/` | One page per job, with a tab per team. All English text is written right in the page |
-| `agents/index.html`, `agents/together/` | What an agent is, and the Product agent pair side by side |
+| `agents/index.html`, `agents/together/`, `agents/content/`, `agents/software/` | What an agent is, and each agent pair (Product, Content, Software) side by side |
 | `find/`, `draft/`, `check/`, `together/` | Tiny redirects from the old addresses, so links shared earlier still work |
 | `runs/<skill-name>.md` | The recorded runs (see below) |
 | `run.js` | Loads a recorded run and shows it: the start of a long answer, the rest behind "Show all" |
@@ -101,6 +102,13 @@ section — that would give the answer away). Keep the repo's `AGENTS.md`
 (or `CLAUDE.md`) in the folder you record in: it tells the AI to follow the
 invoked skill rather than any personal default style you've set up.
 
+`test-fix-loop-agent` is a program, not a chat, so its run is what the
+program printed, inside a `text` code block, starting with the command line
+(`$ python3 agent.py …`); the page shows that same command. It calls its AI
+with `-p "<prompt>"` (Claude Code's style); to record it with Codex like the
+other runs, point `--cli` at a two-line script that passes the prompt to
+`codex exec` instead, and say so on the page.
+
 ## Check it before publishing
 
 From the repo root:
@@ -119,8 +127,9 @@ It checks, with no network:
 - every recorded run exists, has its Date, Tool, Model and Example lines,
   and is shown without losing words or leaving raw `##` / `|` symbols
   (this part needs `node`);
-- the agents' runs match the picture: the controlled agent stopped at least
-  3 times, the autonomous one once.
+- each agent pair's runs match its page's picture: Product and Content
+  controlled 3 stops, autonomous 1; Software controlled 2, the loop program 0;
+- the command shown for the loop program is the one its run shows.
 
 To look at the pages locally:
 

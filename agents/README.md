@@ -1,6 +1,6 @@
 # Agents (Stage 2)
 
-> 🌐 **Not a coder? See the two Product agents side by side in your browser, with real runs:**
+> 🌐 **Not a coder? See each pair of agents side by side in your browser, with real runs:**
 > https://khadir-syed.github.io/k_ai-agent-skills/web/agents/
 
 Stage 1 of this repo (`skills/`) is a single check or a checklist: you ask

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Only this site's own files and the GitHub profile photo (the tab icon)
+       may load. Nothing on this page sends data anywhere. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; connect-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Two AI agents fix the same bug: one asks you before every change, one keeps trying on its own until the tests pass or it hits a limit. See real recorded runs side by side.">
+  <title>Find and fix a bug — k_ai-agent-skills</title>
+  <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=64">
+  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=180">
+  <link rel="stylesheet" href="../../style.css">
+  <script src="../../markdown.js" defer></script>
+  <script src="../../run.js" defer></script>
+</head>
+<body class="j-together">
+  <!-- All English text lives right here, so the page reads instantly.
+       data-t names each piece for future translations. -->
+  <main class="wrap">
+    <a class="back" href="../">← All agents</a>
+    <header class="hero">
+      <span class="badge job" data-t="badge">AI agents · Software team · Bug Fix Agent and Test-Fix Loop Agent</span>
+      <h1 data-t="title">Find and fix a bug</h1>
+      <p class="subtitle" data-t="subtitle">Same bug, two agents: one asks before every change, one keeps trying on its own</p>
+    </header>
+
+    <section class="card">
+      <p data-t="intro_1">Think of two ways to get a leaking tap fixed. One plumber shows you what's wrong and asks before touching anything. The other is left alone with a rule: keep trying until the leak stops — but give up after three tries and call you.</p>
+      <p data-t="intro_2">Both agents here do the same job: <a class="inline-link" href="../../skills/find/">find the bug</a>, fix it, and check the fix worked. The <b>controlled</b> one is a recipe card like every other agent on this site. The <b>autonomous</b> one is different: it's a small real program that runs by itself, so it never asks you anything. Its only brake is a limit on how many times it may try.</p>
+      <p class="plain-words" data-t="plain"><b>In plain words:</b> a <b>test</b> is a tiny program that checks another program gives the right answer — here, that a spreadsheet file (CSV) starts with the column names <code>Name,Email,ID</code>. The test fails because the program forgot the <code>ID</code> column. "Passing" means the test is happy.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-t="compare_heading">One bug, two ways</h2>
+      <svg class="picture" viewBox="0 0 360 314" role="img" aria-labelledby="pic-title pic-desc">
+        <title id="pic-title">Controlled vs autonomous</title>
+        <desc id="pic-desc">The controlled agent finds the bug and suggests a fix, then stops to ask before changing anything; it makes the fix and runs the test again, then stops to ask before calling it fixed: 2 stops. The autonomous program runs the test, asks the AI for a fix if it fails, and runs the test again, up to 3 tries. It never asks you; if it runs out of tries, it hands the problem back to you.</desc>
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="tip" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+        <text x="91" y="24" text-anchor="middle">Controlled</text>
+        <text x="269" y="24" text-anchor="middle">Autonomous</text>
+        <rect class="hot" x="10" y="40" width="162" height="40" rx="10"/>
+        <text class="sub" x="91" y="65" text-anchor="middle">1  Find the bug</text>
+        <rect class="stop" x="22" y="92" width="138" height="30" rx="15"/>
+        <text class="stop-text" x="91" y="112" text-anchor="middle">Stop: OK to fix?</text>
+        <rect class="hot" x="10" y="134" width="162" height="40" rx="10"/>
+        <text class="sub" x="91" y="159" text-anchor="middle">2  Fix it, test again</text>
+        <rect class="stop" x="22" y="186" width="138" height="30" rx="15"/>
+        <text class="stop-text" x="91" y="206" text-anchor="middle">Stop: OK to close?</text>
+        <path class="line" d="M91,216 V232"/>
+        <text class="sub" x="91" y="250" text-anchor="middle">done</text>
+        <text x="91" y="302" text-anchor="middle">2 stops</text>
+        <rect class="hot" x="188" y="40" width="162" height="40" rx="10"/>
+        <text class="sub" x="269" y="65" text-anchor="middle">1  Run the test</text>
+        <path class="line" d="M269,80 V128" marker-end="url(#arrow)"/>
+        <text class="sub" x="279" y="110">failing</text>
+        <rect class="hot" x="188" y="134" width="162" height="40" rx="10"/>
+        <text class="sub" x="269" y="159" text-anchor="middle">2  AI makes a fix</text>
+        <path class="line" d="M350,154 H356 V60 H354" marker-end="url(#arrow)"/>
+        <text class="sub" x="269" y="198" text-anchor="middle">passing → done</text>
+        <rect class="stop" x="200" y="220" width="138" height="48" rx="15"/>
+        <text class="stop-text" x="269" y="240" text-anchor="middle">After 3 tries:</text>
+        <text class="stop-text" x="269" y="258" text-anchor="middle">hand it back</text>
+        <text x="269" y="302" text-anchor="middle">0 stops, 3 tries</text>
+      </svg>
+      <p data-t="compare_1"><b>Controlled</b> stops twice: before it changes any code, and before it calls the bug fixed. A passing test isn't the same as you agreeing it's fixed.</p>
+      <p data-t="compare_2"><b>Autonomous</b> never stops to ask. It runs the test, has the AI make the smallest fix, and runs the test again — until the test passes or it has used up its tries.</p>
+      <p class="lesson" data-t="lesson">The lesson: a program that never asks needs a hard limit — and someone should still look at what it changed. In an earlier test, given a test that could never pass, this program made it "pass" by changing the test instead of the code.</p>
+    </section>
+
+    <section class="card" id="asked">
+      <h2 data-t="asked_heading">What we gave both agents</h2>
+      <p data-t="asked_intro">The same small broken program, in a folder of its own: <code>export.py</code> builds the column names, and <code>test_export.py</code> checks them.</p>
+      <pre class="evidence" data-t="files">export.py
+HEADER_FIELDS = ["Name", "Email"]
+
+def build_csv_header():
+    return ",".join(HEADER_FIELDS)
+
+test_export.py
+import unittest
+from export import build_csv_header
+
+class TestExport(unittest.TestCase):
+    def test_csv_header(self):
+        self.assertEqual(build_csv_header(), "Name,Email,ID")
+
+if __name__ == "__main__":
+    unittest.main()</pre>
+      <div data-example="agents/software/bug-fix-agent/examples/failing-test-scenario.md">
+        <p class="try-label" data-t="asked_controlled">To the controlled agent, in a chat:</p>
+        <p class="prompt">Use the Bug Fix Agent on this failing test: `test_csv_header` expects the header `Name,Email,ID` but got `Name,Email`. Diagnose it, then propose a fix — don't touch anything until I approve.</p>
+        <p class="try-label" data-t="asked_evidence">With the error message:</p>
+        <pre class="evidence">FAILED tests/test_export.py::test_csv_header
+AssertionError: assert 'Name,Email' == 'Name,Email,ID'</pre>
+      </div>
+      <div data-example="agents/software/test-fix-loop-agent/examples/sample-run-transcript.md">
+        <p class="try-label" data-t="asked_autonomous">The autonomous program, started with one command — nothing typed after that:</p>
+        <p class="prompt command">python3 agent.py "python3 -m unittest -q" --max-attempts 3</p>
+        <p class="muted" data-t="asked_command">That means: run the test with <code>python3 -m unittest -q</code>, and try at most 3 times.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 data-t="runs_heading">What the real agents did</h2>
+      <p data-t="runs_intro">Two real runs, one per agent. Each time the controlled agent stopped to ask, the reply typed back is shown too. Both end with <code>export.py</code> as the agent left it.</p>
+      <div class="side-by-side">
+        <div class="run" id="run-controlled" data-run="bug-fix-agent"
+             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
+             data-ai="The agent" data-you="Reply typed back" data-file="The file at the end:"
+             data-show="Show all" data-less="Show less"
+             data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
+             data-missing="This real run hasn't been added yet."
+             data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <p class="side-title">Controlled</p>
+          <p class="stops"></p>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+        </div>
+        <div class="run" id="run-autonomous" data-run="test-fix-loop-agent"
+             data-recorded="Recorded on" data-vary="Run it again and the words will differ."
+             data-ai="What the program printed" data-you="Reply typed back" data-file="The file at the end:"
+             data-show="Show all" data-less="Show less"
+             data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
+             data-stops-none="In this run, it never stopped to ask."
+             data-missing="This real run hasn't been added yet."
+             data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <p class="side-title">Autonomous</p>
+          <p class="stops"></p>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+        </div>
+      </div>
+      <noscript><p class="warning">Showing the recorded runs needs JavaScript switched on in your browser.</p></noscript>
+      <p class="plain-words" data-t="reading"><b>Reading the program's printout:</b> attempt 1 ran the test, and it failed (the <code>Name,Email</code> vs <code>Name,Email,ID</code> lines). The program then asked the AI for the smallest fix. Attempt 2 ran the test again, and it passed — so the program stopped, with 1 of its 3 tries left unused.</p>
+    </section>
+
+    <section class="card links">
+      <p class="muted" data-t="private_note">This page never talks to an AI. It shows runs that were recorded earlier, exactly as the agents wrote them — except one personal detail we took out: a folder name on our computer. The autonomous program is built to call Claude Code; to record it with the same AI as every other run on this site, we gave it a tiny go-between script that passes its request to Codex instead.</p>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/agents/software/bug-fix-agent" rel="noopener noreferrer" data-t="controlled_link">See the controlled agent's recipe card on GitHub</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/agents/software/test-fix-loop-agent" rel="noopener noreferrer" data-t="autonomous_link">See the autonomous program on GitHub</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/agents#try-the-samples" rel="noopener noreferrer" data-t="install_link">Try them yourself</a>
+    </section>
+
+    <footer class="footer" data-t="footer">Learning should not stop.</footer>
+  </main>
+</body>
+</html>

@@ -16,7 +16,8 @@ ROOT = os.path.dirname(HERE)
 REPO_URL = "https://github.com/khadir-syed/k_ai-agent-skills/tree/main/"
 JOBS = ["find", "draft", "check"]  # the skill pages, under skills/
 TEAMS = ["product", "content", "social", "software"]
-RUN_PAGES = [f"skills/{job}/index.html" for job in JOBS] + ["agents/together/index.html"]
+AGENT_PAGES = ["together", "content", "software"]  # one page per agent pair, under agents/
+RUN_PAGES = [f"skills/{job}/index.html" for job in JOBS] + [f"agents/{a}/index.html" for a in AGENT_PAGES]
 PAGES = ["index.html", "skills/index.html", "agents/index.html"] + RUN_PAGES
 # Old addresses from before the pages moved; each is now a tiny redirect.
 MOVED = {"find": "skills/find", "draft": "skills/draft", "check": "skills/check", "together": "agents/together"}
@@ -69,6 +70,8 @@ cards = re.findall(r'<a class="job-card j-(\w+)" href="(\w+)/">', read("skills/i
 check(cards == [(job, job) for job in JOBS], f"skills page cards {cards} don't match the job pages {JOBS}")
 for job in JOBS:
     check(f'<body class="j-{job}">' in read(f"skills/{job}/index.html"), f"{job}: page colour class missing")
+agent_cards = re.findall(r'<a class="job-card j-together" href="(\w+)/">', read("agents/index.html"))
+check(agent_cards == AGENT_PAGES, f"agents page cards {agent_cards} don't match the agent pages {AGENT_PAGES}")
 for old, new in MOVED.items():
     check(f'url=../{new}/"' in read(f"{old}/index.html"), f"{old}/: should redirect to {new}/")
 
@@ -90,6 +93,8 @@ check(sorted(shown_runs) == skill_folders, f"every skill should be on a page onc
 # ---- What we gave the AI == the repo's example files --------------------------
 def example_parts(path):
     text = open(os.path.join(ROOT, path), encoding="utf-8").read()
+    if "## User prompt" not in text:
+        return None, None  # test-fix-loop-agent is a program: started by a command, not asked
     prompt = re.search(r"## User prompt\s+((?:>.*\n?)+)", text).group(1)
     prompt = squash(re.sub(r"^>\s?", "", prompt, flags=re.M))
     block = re.search(r"```text\n(.*?)\n```", text, re.S)
@@ -99,6 +104,7 @@ def example_parts(path):
 
 
 examples = {}  # run name -> example file, for the run header check below
+commands = {}  # run name -> the command shown, for a program run
 for name in RUN_PAGES:
     job = name.split("/")[1]
     page = read(name)
@@ -106,6 +112,11 @@ for name in RUN_PAGES:
     check(blocks, f"{job}: no request shown")
     for path, block in blocks:
         prompt, evidence = example_parts(path)
+        if prompt is None:
+            command = re.findall(r'<p class="prompt command">(.*?)</p>', block, re.S)
+            check(len(command) == 1, f"{job}: {path} needs the one command that started it")
+            commands[os.path.basename(os.path.dirname(os.path.dirname(path)))] = plain(command[0]) if command else None
+            continue
         shown = [squash(plain(p)) for p in re.findall(r'<p class="prompt">(.*?)</p>', block, re.S)]
         check(shown == [prompt], f"{job}: request differs from {path}\n  page: {shown}\n  file: {prompt}")
         for pre in re.findall(r'<pre class="evidence">(.*?)</pre>', block, re.S):
@@ -163,6 +174,9 @@ if shutil.which("node"):
             check(meta.get("Tool") and meta.get("Model"), f"{name}: Tool and Model lines are needed")
             check(meta.get("Example") == examples[name], f"{name}: Example should be {examples[name]}")
             check(any(t["who"] == "AI" for t in turns), f"{name}: no AI answer in the run")
+            if name in commands:
+                check(turns and f"$ {commands[name]}" in turns[0]["text"],
+                      f"{name}: the command on the page isn't the one the run shows")
             for t in turns:
                 if t["who"] == "YOU":
                     continue
@@ -175,14 +189,14 @@ if shutil.which("node"):
                 # (a "#" table heading is fine; "# Title" is an unformatted heading)
                 check(not any(re.match(r"#{1,6}\s|\||```", line) for line in shown_lines),
                       f"{name}: raw Markdown symbols left on screen")
-        # The picture on the agents page says 3 stops vs 1 stop: the real runs must agree.
-        stops = {name: sum(t["who"] == "YOU" for t in run["turns"]) for name, run in runs.items()}
-        if "feature-launch-readiness-agent-controlled" in stops:
-            check(stops["feature-launch-readiness-agent-controlled"] >= 3,
-                  f"controlled run stopped {stops['feature-launch-readiness-agent-controlled']} times; the page says 3")
-        if "feature-launch-readiness-agent-autonomous" in stops:
-            check(stops["feature-launch-readiness-agent-autonomous"] == 1,
-                  f"autonomous run stopped {stops['feature-launch-readiness-agent-autonomous']} times; the page says 1")
+        # Each agent page's picture gives a number of stops: the real runs must agree.
+        pictured = {"feature-launch-readiness-agent-controlled": 3, "feature-launch-readiness-agent-autonomous": 1,
+                    "content-publish-readiness-agent-controlled": 3, "content-publish-readiness-agent-autonomous": 1,
+                    "bug-fix-agent": 2, "test-fix-loop-agent": 0}
+        for name, want in pictured.items():
+            if name in runs:
+                got = sum(t["who"] == "YOU" for t in runs[name]["turns"])
+                check(got == want, f"{name} stopped {got} times; its page's picture says {want}")
 else:
     print("(node not installed: skipped the run-formatting checks)")
 
