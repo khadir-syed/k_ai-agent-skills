@@ -1,5 +1,8 @@
 # Agents (Stage 2)
 
+> 🌐 **Not a coder? See the two Product agents side by side in your browser, with real runs:**
+> https://khadir-syed.github.io/k_ai-agent-skills/web/together/
+
 Stage 1 of this repo (`skills/`) is a single check or a checklist: you ask
 for one, get a report or a draft back, and you're kept in the loop for every
 write. An **Agent**, as used here, is the same idea — still just a text

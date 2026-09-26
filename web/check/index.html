@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Only this site's own files and the GitHub profile photo (the tab icon)
+       may load. Nothing on this page sends data anywhere. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; connect-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="An AI skill that runs the same 6 launch checks every time and leaves the go/no-go call to you — with a real recorded run.">
+  <title>Is it ready to go? — k_ai-agent-skills</title>
+  <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=64">
+  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=180">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../markdown.js" defer></script>
+  <script src="../run.js" defer></script>
+</head>
+<body class="j-check">
+  <!-- All English text lives right here, so the page reads instantly.
+       data-t names each piece for future translations. -->
+  <main class="wrap">
+    <a class="back" href="../">← All jobs</a>
+    <header class="hero">
+      <span class="badge job" data-t="badge">AI skills · Job 3 · Feature Launch Readiness Checklist</span>
+      <h1 data-t="title">Is it ready to go?</h1>
+      <p class="subtitle" data-t="subtitle">The same 6 checks, every time — you make the call</p>
+    </header>
+
+    <section class="card">
+      <p data-t="intro_1">Before every take-off, pilots read the same checklist — even after a thousand flights. Not because they forget, but because a list never gets tired or rushed. And the checklist never flies the plane: the pilot still decides.</p>
+      <p data-t="intro_2">This skill is that checklist for a new feature. It runs the same 6 checks, marks each one, and shows why. If it can't tell, it says so instead of guessing. Whether to launch stays your decision.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-t="checks_heading">The 6 checks</h2>
+      <ol class="checks">
+        <li>If something goes wrong, can we switch it off fast?</li>
+        <li>Can we give it to a few people first, instead of everyone at once?</li>
+        <li>How will we know it worked — is there a number to watch?</li>
+        <li>Are the help pages ready?</li>
+        <li>Does the support team know it's coming?</li>
+        <li>Are any known problems still open?</li>
+      </ol>
+      <p class="legend" data-t="legend">Each check gets one mark: <b>Pass</b>, <b>Fail</b>, <b>Could not determine</b> (not enough information to tell) or <b>N/A</b> (doesn't apply).</p>
+      <svg class="picture" viewBox="0 0 360 448" role="img" aria-labelledby="pic-title pic-desc">
+        <title id="pic-title">How it works</title>
+        <desc id="pic-desc">A feature about to launch goes through the same 6 checks every time. Each check gets pass, fail or could not determine. Then you decide whether to launch; the AI never makes that call.</desc>
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="tip" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+        <rect class="box" x="30" y="8" width="300" height="44" rx="12"/>
+        <text x="180" y="36" text-anchor="middle">A feature about to launch</text>
+        <path class="line" d="M180,52 V76" marker-end="url(#arrow)"/>
+        <rect class="hot" x="30" y="82" width="300" height="196" rx="12"/>
+        <text x="180" y="108" text-anchor="middle">The same 6 checks</text>
+        <text class="sub" x="50" y="136">1  Can we switch it off fast?</text>
+        <text class="sub" x="50" y="160">2  A few people first?</text>
+        <text class="sub" x="50" y="184">3  A number to watch?</text>
+        <text class="sub" x="50" y="208">4  Help pages ready?</text>
+        <text class="sub" x="50" y="232">5  Support team told?</text>
+        <text class="sub" x="50" y="256">6  Known problems still open?</text>
+        <path class="line" d="M180,278 V302" marker-end="url(#arrow)"/>
+        <rect class="box" x="30" y="308" width="300" height="44" rx="12"/>
+        <text x="180" y="336" text-anchor="middle">Pass · Fail · Can't tell — each</text>
+        <path class="line" d="M180,352 V376" marker-end="url(#arrow)"/>
+        <rect class="stop" x="30" y="382" width="300" height="58" rx="12"/>
+        <text class="stop-text" x="180" y="406" text-anchor="middle">You decide: launch or not</text>
+        <text class="sub" x="180" y="426" text-anchor="middle">The AI never makes that call</text>
+      </svg>
+    </section>
+
+    <section class="card">
+      <h2 data-t="good_heading">A good check vs a weak one</h2>
+      <p data-t="good_intro">For the feature below, this is what we built the skill to do — and the kind of answer it must avoid.</p>
+      <ul class="examples">
+        <li class="ex good">
+          <p class="ex-say">✅ "A few people first: <b>Fail</b>. There is an on/off switch, but it's already on for everyone."</p>
+          <p class="ex-why">Good: it checked what the switch is actually used for.</p>
+        </li>
+        <li class="ex good">
+          <p class="ex-say">✅ "5 of the 6 checks failed. This is input for whoever decides the launch."</p>
+          <p class="ex-why">Good: clear facts, and the decision stays with you.</p>
+        </li>
+        <li class="ex weak">
+          <p class="ex-say">❌ "A few people first: <b>Pass</b> — there's an on/off switch."</p>
+          <p class="ex-why">Weak: having a switch isn't the same as using it to go slowly.</p>
+        </li>
+        <li class="ex weak">
+          <p class="ex-say">❌ "Don't launch this week."</p>
+          <p class="ex-why">Weak: that's your call, not the checklist's.</p>
+        </li>
+      </ul>
+      <p class="lesson" data-t="lesson">The lesson: a checklist is only useful if it's honest — a "Pass" needs a real reason, and "I can't tell" is a fine answer.</p>
+    </section>
+
+    <section class="card" id="asked" data-example="skills/product/feature-launch-readiness-checklist/examples/export-feature-launch.md">
+      <h2 data-t="asked_heading">What we gave the AI</h2>
+      <p class="try-label" data-t="asked_request">The request:</p>
+      <p class="prompt">Use the Feature Launch Readiness Checklist on the CSV export feature we're shipping this week.</p>
+      <p class="try-label" data-t="asked_context">What the team knew, the week of launch:</p>
+      <pre class="evidence">Feature: CSV export of the currently filtered Reports view, for
+Analyst-role users and above.
+
+Known so far:
+- Behind a feature flag, currently enabled for 100% of eligible users
+  (no staged rollout planned).
+- No rollback plan beyond "turn the feature flag off."
+- Success metric: PRD states the goal is reducing export-related support
+  tickets (~15/month baseline) but no target number or dashboard exists yet.
+- No documentation or help-center article has been written.
+- Support team has not been given any advance notice.
+- One open bug: export fails silently for reports with &gt;10,000 rows;
+  not yet fixed, not yet explicitly accepted as a known limitation.</pre>
+      <p class="muted" data-t="flag_note">A "feature flag" is an on/off switch for a feature, so it can be turned off without a new release.</p>
+    </section>
+
+    <section class="card run" id="run" data-run="feature-launch-readiness-checklist"
+             data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
+             data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+             data-show="Show all" data-less="Show less"
+             data-missing="This real run hasn't been added yet."
+             data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+      <h2 data-t="run_heading">What the real AI said</h2>
+      <p class="run-meta"></p>
+      <ol class="turns"></ol>
+      <p class="run-status muted" role="status">Loading the recorded run…</p>
+      <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
+    </section>
+
+    <section class="card links">
+      <p class="muted" data-t="private_note">This page never talks to an AI. It shows a run that was recorded earlier, exactly as the AI wrote it.</p>
+      <a class="link-card" href="../together/" data-t="next_link">Next: Job 4 — Do the whole job with me →</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/product/feature-launch-readiness-checklist" rel="noopener noreferrer" data-t="skill_link">See this skill's recipe card on GitHub</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills#using-the-install-script" rel="noopener noreferrer" data-t="install_link">Use it in your own AI tool</a>
+    </section>
+
+    <footer class="footer" data-t="footer">Learning should not stop.</footer>
+  </main>
+</body>
+</html>

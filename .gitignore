@@ -9,3 +9,8 @@
 # Python (agents/software/test-fix-loop-agent)
 __pycache__/
 *.pyc
+
+# Skills copied in by ./install.sh when run inside this repo
+.agents/skills/
+.claude/skills/
+.github/skills/

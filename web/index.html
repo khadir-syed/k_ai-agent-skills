@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The home page has no scripts at all: only this site's own files and the
+       GitHub profile photo may load. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="What AI skills and agents do, in plain words — with real recorded runs. No coding needed.">
+  <title>AI skills, explained — k_ai-agent-skills</title>
+  <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=64">
+  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=180">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero brand">
+      <div class="brand-frame"><img src="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=224" alt="Khadir" width="112" height="112"></div>
+      <a class="badge" href="https://khadir-syed.github.io/" rel="noopener noreferrer">@k_thetechman</a>
+      <p class="brand-name"><span>K</span> the Techman</p>
+      <p class="subtitle">Khadir | AI, Enterprise &amp; Cloud Systems</p>
+      <ul class="pills">
+        <li>Cloud</li><li>Containers</li><li>Kubernetes</li><li>Data &amp; AI</li>
+      </ul>
+      <p class="hook">"Mental Models. Production Systems. Zero Fluff."</p>
+    </header>
+
+    <section class="card">
+      <h1 data-t="home_title">AI skills, explained</h1>
+      <p data-t="home_intro_1">Imagine giving a new team member a recipe card: "When someone asks for X, do these steps, and never do that." They follow it the same way every time. A <b>skill</b> is that recipe card — for an AI helper.</p>
+      <p data-t="home_intro_2">An <b>agent</b> follows a few recipe cards in a row to finish a bigger job. Some agents check with you after every step; others only stop before they save or send something.</p>
+      <p data-t="home_intro_3">Every page here shows one job in plain words, with a real run: what we asked a real AI, and exactly what it answered (only personal details are ever taken out). No coding needed.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-t="story_heading">Follow one story</h2>
+      <p data-t="story_intro">Sales asks the product team for "an export button on the reports page". That's all they say. Here's how AI skills help turn that into a feature that's ready to launch:</p>
+      <svg class="picture" viewBox="0 0 360 196" role="img" aria-labelledby="story-title story-desc">
+        <title id="story-title">One story, four jobs</title>
+        <desc id="story-desc">Job 1 finds what's missing, job 2 writes a first draft, job 3 checks if it's ready. Job 4 is an agent that does jobs 1, 2 and 3 for you in one go.</desc>
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="tip" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+        <rect class="c-together" x="8" y="10" width="344" height="138" rx="18"/>
+        <circle class="c-find" cx="62" cy="56" r="30"/>
+        <circle class="c-draft" cx="180" cy="56" r="30"/>
+        <circle class="c-check" cx="298" cy="56" r="30"/>
+        <text class="on-job" x="62" y="63" text-anchor="middle">1</text>
+        <text class="on-job" x="180" y="63" text-anchor="middle">2</text>
+        <text class="on-job" x="298" y="63" text-anchor="middle">3</text>
+        <path class="line" d="M96,56 H142" marker-end="url(#arrow)"/>
+        <path class="line" d="M214,56 H260" marker-end="url(#arrow)"/>
+        <text class="sub" x="62" y="112" text-anchor="middle"><tspan x="62">Find what's</tspan><tspan x="62" dy="16">missing</tspan></text>
+        <text class="sub" x="180" y="112" text-anchor="middle"><tspan x="180">Write a first</tspan><tspan x="180" dy="16">draft</tspan></text>
+        <text class="sub" x="298" y="112" text-anchor="middle"><tspan x="298">Check if it's</tspan><tspan x="298" dy="16">ready</tspan></text>
+        <text class="t-together" x="180" y="178" text-anchor="middle">4 · An agent does 1 → 2 → 3 for you</text>
+      </svg>
+    </section>
+
+    <nav aria-label="Jobs">
+      <a class="job-card j-find" href="find/">
+        <span class="job-num">Job 1</span>
+        <span class="job-title" data-t="home_find_title">Something's unclear? Find what's missing</span>
+        <span class="job-line" data-t="home_find_line">Before anyone writes a plan, the AI lists the questions nobody has answered yet — and who could answer them.</span>
+      </a>
+      <a class="job-card j-draft" href="draft/">
+        <span class="job-num">Job 2</span>
+        <span class="job-title" data-t="home_draft_title">Write me a first draft</span>
+        <span class="job-line" data-t="home_draft_line">The AI writes a first draft from what you give it, shows it to you, and only saves it once you say yes.</span>
+      </a>
+      <a class="job-card j-check" href="check/">
+        <span class="job-num">Job 3</span>
+        <span class="job-title" data-t="home_check_title">Is it ready to go?</span>
+        <span class="job-line" data-t="home_check_line">Like a pilot's checklist before take-off: the AI runs the same 6 checks every time. You still decide whether to launch.</span>
+      </a>
+      <a class="job-card j-together" href="together/">
+        <span class="job-num">Job 4</span>
+        <span class="job-title" data-t="home_together_title">Do the whole job with me</span>
+        <span class="job-line" data-t="home_together_line">An agent does jobs 1, 2 and 3 in a row. See the version that asks you after every step next to the one that asks only once.</span>
+      </a>
+    </nav>
+
+    <section class="card links">
+      <p class="muted" data-t="home_more">Want to use these skills yourself, in Claude Code, Codex or GitHub Copilot CLI? Everything is free on GitHub, with an install script.</p>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills" rel="noopener noreferrer" data-t="home_repo">See all skills and agents on GitHub</a>
+      <a class="link-card" href="https://khadir-syed.github.io/k_ai-basics/web/" rel="noopener noreferrer" data-t="home_basics">New to AI? Start with AI Basics — 10 small demos in your browser</a>
+    </section>
+
+    <footer class="footer" data-t="footer">Learning should not stop.</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,124 @@
+# Web version: the skills, explained in your browser
+
+**Try it:** https://khadir-syed.github.io/k_ai-agent-skills/web/
+
+Right now:
+
+- **Job 1 — Find what's missing:** https://khadir-syed.github.io/k_ai-agent-skills/web/find/
+- **Job 2 — Write me a first draft:** https://khadir-syed.github.io/k_ai-agent-skills/web/draft/
+- **Job 3 — Is it ready to go?:** https://khadir-syed.github.io/k_ai-agent-skills/web/check/
+- **Job 4 — Do the whole job with me:** https://khadir-syed.github.io/k_ai-agent-skills/web/together/
+
+## What is this?
+
+The skills in this repo are recipe cards for an AI helper. Reading a recipe
+card is hard if you've never cooked — so these pages show the cooking
+instead. Each page takes one job, explains it with an everyday comparison,
+draws it as a picture, and then shows a **real recorded run**: exactly what
+we asked a real AI, and exactly what it answered.
+
+The pages are sorted by the job you need done, not by how the repo's folders
+are laid out. They follow one story: Sales asks for "an export button", and
+each job moves it one step closer to launch.
+
+```mermaid
+flowchart LR
+    A["'Can we get an export?'"] --> B["Job 1<br/>Find what's missing"]
+    B --> C["Job 2<br/>Write a first draft"]
+    C --> D["Job 3<br/>Is it ready?"]
+    E["Job 4: an agent does<br/>jobs 1 → 2 → 3 for you"] -.-> B
+```
+
+Good to know:
+
+- **The pages never talk to an AI.** They only show runs that were recorded
+  earlier and saved in [`runs/`](runs/). Nothing you do on the page is sent
+  anywhere.
+- **Nothing to install.** No sign-up, no downloads, no scripts from other
+  websites — only this site's own files and the GitHub profile photo.
+- **The requests on each page are the repo's own examples.** Each page shows
+  the prompt and background from the skill's `examples/` file, word for word,
+  and [`test_web.py`](test_web.py) checks they still match.
+
+## How the files fit together
+
+| File | What it does |
+|---|---|
+| `index.html` | Home page: the story and one card per job |
+| `find/`, `draft/`, `check/`, `together/` | One page per job. All English text is written right in the page |
+| `runs/<skill-name>.md` | The recorded runs (see below) |
+| `run.js` | Loads a recorded run and shows it: the start of a long answer, the rest behind "Show all" |
+| `markdown.js` | Turns the AI's formatting symbols (`##`, `**`, tables) into headings, bold and tables — safely, as plain text only. Copied from k_ai-basics, plus code blocks, `code` and quotes |
+| `style.css` | Colours match https://khadir-syed.github.io; each job has its own warm accent |
+| `test_web.py` | The self-check (below) |
+
+The pictures are drawn right inside each page (inline SVG) and coloured by
+`style.css`, so they need no scripts and stay sharp on a phone.
+
+## Adding a recorded run
+
+A run file is named after the skill folder, like
+`runs/requirements-gap-investigator.md`. It starts with four header lines,
+then a blank line, then the AI's reply pasted exactly as it came. The only
+edit allowed is taking out personal details (a folder path on your computer,
+your time zone, names, emails): replace them with something plain like
+`launch-brief.md` or a visible `[time zone removed]`, and say so on the page.
+
+```text
+Date: 2026-09-27
+Tool: Codex CLI 0.154.0
+Model: groq/openai/gpt-oss-120b
+Example: skills/product/requirements-gap-investigator/examples/vague-export-request.md
+
+<the AI's reply, unedited apart from personal details>
+```
+
+When a run has several turns (the agents stop to ask you), put a marker line
+before each turn:
+
+```text
+=== AI ===
+<what the AI said>
+=== YOU ===
+<what you typed back>
+=== FILE launch-brief.md ===
+<the file the AI saved>
+```
+
+To record one: use a fresh clone, run `install.sh`, start a new session,
+and paste the example file's prompt and background (not its "Expected…"
+section — that would give the answer away).
+
+## Check it before publishing
+
+From the repo root:
+
+```bash
+python3 web/test_web.py
+```
+
+It checks, with no network:
+
+- every page keeps its strict safety rules (no inline scripts or styles, no
+  scripts from other sites) and every link leads somewhere real;
+- each request shown on a page matches the repo's example file word for word;
+- every recorded run exists, has its Date, Tool, Model and Example lines,
+  and is shown without losing words or leaving raw `##` / `|` symbols
+  (this part needs `node`);
+- the agents' runs match the picture: the controlled agent stopped at least
+  3 times, the autonomous one once.
+
+To look at the pages locally:
+
+```bash
+python3 -m http.server 8765 --bind 127.0.0.1
+```
+
+Then open http://127.0.0.1:8765/web/.
+
+## Publishing
+
+[`.github/workflows/pages.yml`](../.github/workflows/pages.yml) publishes
+the repo to GitHub Pages on every push to `main`. The repo's Pages source
+must be set to **GitHub Actions** (Settings → Pages). The actions it uses
+are pinned to exact commits, so a changed release can't slip in.

@@ -1,0 +1,222 @@
+/* Colours and shapes match https://khadir-syed.github.io
+   (base copied from k_ai-basics web/style.css) */
+:root {
+  --bg: #0b0a09;
+  --card: #1c1917;
+  --line: #292524;
+  --text: #f5f5f4;
+  --muted: #a8a29e;
+  --soft: #d6d3d1;
+  --amber: #fbbf24;
+  --amber-soft: #fcd34d;
+  --orange: #d97706;
+  --glow: rgba(217, 119, 6, 0.18);
+  --good: #86efac;
+  --bad: #fca5a5;
+  --job: var(--amber);
+}
+
+/* One warm brand shade per job: the card edge, the picture and the page badge. */
+.j-find { --job: #fbbf24; }
+.j-draft { --job: #fb923c; }
+.j-check { --job: #fde68a; }
+.j-together { --job: #f59e0b; }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg) radial-gradient(circle at 50% 0%, var(--glow) 0%, rgba(11, 10, 9, 0) 60%) no-repeat;
+  color: var(--text);
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 48px; }
+
+.hero { text-align: center; margin-bottom: 20px; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 9999px;
+  background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--amber-soft); font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+}
+.hero .badge.job { color: var(--job); border-color: var(--job); }
+h1 {
+  margin: 12px 0 4px; font-size: 28px; font-weight: 900; letter-spacing: -0.6px;
+  text-transform: uppercase; color: #fff;
+}
+.subtitle {
+  margin: 0; color: var(--amber); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.6px; text-transform: uppercase;
+}
+h2 { margin: 0 0 12px; font-size: 18px; font-weight: 800; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  padding: 20px; margin: 16px 0;
+}
+.card p { margin: 0 0 12px; }
+.card p:last-child { margin-bottom: 0; }
+.muted { color: var(--muted); font-size: 14px; }
+.warning {
+  border-left: 3px solid var(--orange); background: rgba(217, 119, 6, 0.08);
+  padding: 10px 14px; border-radius: 8px; color: var(--soft); font-size: 14px;
+}
+.lesson { font-weight: 700; color: #fff; }
+
+.link-card {
+  display: block; background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 16px; margin-top: 10px; color: var(--text); font-weight: 700; text-decoration: none;
+}
+.link-card:hover { border-color: var(--orange); }
+.inline-link { color: var(--amber); }
+
+.footer {
+  text-align: center; color: var(--muted); font-size: 12px; letter-spacing: 1px;
+  text-transform: uppercase; margin-top: 28px;
+}
+
+.back { display: inline-block; color: var(--muted); font-size: 14px; text-decoration: none; margin-bottom: 8px; }
+.back:hover { color: var(--amber); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+/* Home page: brand header, same as https://khadir-syed.github.io */
+.brand .brand-frame {
+  width: 112px; height: 112px; margin: 0 auto 16px; padding: 2.5px; border-radius: 28px;
+  background: linear-gradient(to bottom, #fbbf24, #f59e0b, #78350f);
+  box-shadow: 0 0 28px rgba(245, 158, 11, 0.35), inset 0 0 10px rgba(245, 158, 11, 0.2);
+}
+.brand img { display: block; width: 100%; height: 100%; border-radius: 25.5px; object-fit: cover; background: #0c0a09; }
+.brand .badge { text-decoration: none; }
+.brand-name {
+  margin: 10px 0 2px; font-size: 30px; font-weight: 900; letter-spacing: -0.6px;
+  text-transform: uppercase; color: #fff; line-height: 1.2;
+}
+.brand-name span { color: var(--amber); }
+.brand .subtitle { color: rgba(253, 230, 138, 0.9); }
+.pills { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 0; padding: 0; }
+.pills li {
+  font-size: 11px; font-weight: 500; padding: 2px 10px; border-radius: 6px;
+  background: var(--card); border: 1px solid var(--line); color: var(--soft);
+}
+.hook { margin: 12px 0 0; color: var(--muted); font-size: 12px; font-style: italic; }
+.card h1 { margin-top: 0; font-size: 22px; line-height: 1.25; }
+
+/* Home page: one card per job, its edge in the job's colour */
+.job-card {
+  display: block; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--job);
+  border-radius: 16px; padding: 16px 20px; margin: 12px 0; color: var(--text); text-decoration: none;
+}
+.job-card:hover { border-color: var(--job); background: #24201c; }
+.job-num { display: block; color: var(--job); font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; }
+.job-title { display: block; font-size: 18px; font-weight: 800; margin: 2px 0 4px; }
+.job-card:hover .job-title { color: var(--job); }
+.job-line { display: block; color: var(--muted); font-size: 14px; }
+
+/* Pictures: drawn right in the page, coloured here (no scripts needed) */
+.picture { margin: 4px auto 0; display: block; width: 100%; max-width: 440px; height: auto; }
+.picture text { fill: var(--text); font-family: inherit; font-size: 15px; font-weight: 700; }
+.picture .sub { fill: var(--muted); font-size: 12.5px; font-weight: 500; }
+.picture .on-job { fill: var(--bg); }
+.picture .box { fill: var(--bg); stroke: var(--line); stroke-width: 1.5; }
+.picture .hot { fill: var(--bg); stroke: var(--job); stroke-width: 2.5; }
+.picture .solid { fill: var(--job); stroke: none; }
+.picture .stop { fill: rgba(217, 119, 6, 0.15); stroke: var(--orange); stroke-width: 1.5; }
+.picture .stop-text { fill: var(--amber-soft); font-size: 13px; }
+.picture .line { stroke: var(--muted); stroke-width: 2; fill: none; }
+.picture .tip { fill: var(--muted); }
+.picture .c-find { fill: #fbbf24; }
+.picture .c-draft { fill: #fb923c; }
+.picture .c-check { fill: #fde68a; }
+.picture .c-together { stroke: #f59e0b; stroke-width: 2; fill: none; stroke-dasharray: 6 5; }
+.picture .t-together { fill: #f59e0b; }
+.picture .on-job { font-size: 22px; font-weight: 900; }
+
+/* Does ✅ / won't ❌ lists, and good vs weak answers */
+.two-lists { display: grid; gap: 12px; }
+@media (min-width: 620px) { .two-lists { grid-template-columns: 1fr 1fr; } }
+.ticks { list-style: none; margin: 0; padding: 0; font-size: 15px; }
+.ticks li { padding: 4px 0 4px 28px; position: relative; color: var(--soft); }
+.ticks li::before { position: absolute; left: 0; }
+.ticks.yes li::before { content: "✅"; }
+.ticks.no li::before { content: "❌"; }
+.list-head { font-weight: 800; margin: 0 0 4px; }
+.examples { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 10px; }
+.ex { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; min-width: 0; }
+.ex p { margin: 0 0 6px; }
+.ex p:last-child { margin-bottom: 0; }
+.ex-say { font-weight: 700; }
+.ex-why { font-size: 14px; color: var(--soft); }
+.ex.good .ex-why { color: var(--good); }
+.ex.weak .ex-why { color: var(--bad); }
+.checks { margin: 0 0 12px; padding-left: 22px; color: var(--soft); }
+.checks li { margin: 3px 0; }
+.legend { font-size: 14px; color: var(--soft); }
+
+/* What we gave the AI */
+.prompt {
+  margin: 0 0 12px; padding: 10px 14px; border-left: 3px solid var(--job);
+  background: var(--bg); border-radius: 8px; font-size: 15px;
+}
+.evidence {
+  background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; margin: 0 0 12px; font-size: 13px; line-height: 1.55; color: var(--soft);
+  white-space: pre-wrap; word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.try-label { font-weight: 700; margin: 8px 0 6px; }
+
+/* A recorded run: each turn, the AI's answers cut short until "Show all" */
+.run-meta { font-size: 14px; color: var(--muted); }
+.run-meta:empty, .run-status:empty, .stops:empty { display: none; }
+.stops { font-weight: 800; color: var(--amber-soft); }
+.turns { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.turn { min-width: 0; }
+.turn-who { margin: 0 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.4px; text-transform: uppercase; color: var(--job); }
+.turn-you .turn-who { color: var(--muted); }
+.file-name { text-transform: none; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.you-said {
+  margin: 0; padding: 8px 12px; border-radius: 12px; background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3); color: var(--text); white-space: pre-line;
+}
+.turn-file .answer { border-style: dashed; }
+.side-by-side { display: grid; gap: 16px; }
+@media (min-width: 720px) { .side-by-side { grid-template-columns: 1fr 1fr; } }
+.side-by-side > * { min-width: 0; }
+.side-title { font-size: 16px; font-weight: 800; margin: 0 0 6px; }
+
+/* AI answers, formatted by markdown.js; "clamped" shows only the first part
+   (tall enough that a heading, list or document box is readable, not just sliced). */
+.answer {
+  background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; margin: 0;
+}
+.md { font-size: 14px; line-height: 1.55; color: var(--soft); overflow-wrap: break-word; }
+.md.clamped {
+  max-height: 14em; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 75%, transparent);
+  mask-image: linear-gradient(to bottom, #000 75%, transparent);
+}
+.md > :first-child { margin-top: 0; }
+.md > :last-child { margin-bottom: 0; }
+.md h3, .md h4 { color: #fff; font-weight: 800; line-height: 1.3; margin: 14px 0 6px; }
+.md h3 { font-size: 16px; }
+.md h4 { font-size: 15px; }
+.md p, .md ul, .md ol { margin: 0 0 8px; }
+.md ul, .md ol { padding-left: 22px; }
+.md li ul, .md li ol { margin: 2px 0 0; }
+.md strong { color: #fff; }
+.md hr { border: 0; border-top: 1px solid var(--line); margin: 12px 0; }
+.md code, .md pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+.md code { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+.md pre { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin: 0 0 8px; overflow-x: auto; white-space: pre-wrap; }
+.md-doc { border: 1px solid var(--line); border-left: 3px solid var(--job, var(--amber)); border-radius: 8px; padding: 10px 12px 2px; margin: 0 0 8px; background: var(--card); }
+.md blockquote { margin: 0 0 8px; padding: 2px 0 2px 12px; border-left: 3px solid var(--line); color: var(--muted); }
+.md-table { overflow-x: auto; margin: 0 0 8px; }
+.md table { border-collapse: collapse; font-size: 13px; line-height: 1.45; }
+.md th, .md td { border: 1px solid var(--line); padding: 5px 8px; text-align: left; vertical-align: top; min-width: 7em; }
+.md th { background: var(--card); color: #fff; }
+.more-btn {
+  background: none; border: 0; padding: 0; margin-top: 6px; cursor: pointer;
+  color: var(--amber); font: inherit; font-size: 14px; font-weight: 700;
+}

@@ -1,5 +1,8 @@
 # AI Skills and Agents Samples
 
+> 🌐 **Not a coder? See what these skills do, in plain words with real runs — nothing to install:**
+> https://khadir-syed.github.io/k_ai-agent-skills/web/
+
 A **skill** is a text file that teaches an AI coding assistant how to do a
 specific job — kind of like a recipe card, or step-by-step instructions you'd
 give a new team member. Instead of typing out the same detailed instructions
@@ -14,7 +17,7 @@ Code, and GitHub Copilot CLI.
 ## Quick start
 
 ```bash
-git clone https://github.com/khadir-syed/ai-agent-skills.git && cd ai-agent-skills
+git clone https://github.com/khadir-syed/k_ai-agent-skills.git && cd k_ai-agent-skills
 mkdir -p .claude
 ./install.sh root-cause-investigator
 ```
@@ -36,6 +39,7 @@ instead of just running the investigation.
 - [Skills (Stage 1)](skills/README.md) — how a skill works, the full list of skills, example runs, and prompts you can try yourself
 - [Agents (Stage 2)](agents/README.md) — six agents, some that check in with you at every step and some that check in less, example runs, and tests where we tried to trick them
 - [Orchestrators (Stage 3)](orchestrators/README.md) — a "router" that figures out which agent should handle your request
+- [Web version](web/README.md) — the Product skills and agents explained in plain words in your browser, with real recorded runs (for non-coders)
 - [Use a skill, agent, or orchestrator in an AI coding tool](#use-a-skill-in-an-ai-coding-tool)
 - [Troubleshooting](#troubleshooting)
 - [What these samples do not provide](#what-these-samples-do-not-provide)

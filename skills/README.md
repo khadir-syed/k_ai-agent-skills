@@ -1,5 +1,8 @@
 # Skills (Stage 1)
 
+> 🌐 **Not a coder? See the Product skills explained in your browser, with real runs:**
+> https://khadir-syed.github.io/k_ai-agent-skills/web/
+
 A **skill** is a text file that teaches an AI coding assistant how to do a
 specific job — like a recipe card or a checklist you'd hand a new team
 member, instead of typing the same instructions into a prompt every time.
