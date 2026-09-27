@@ -123,8 +123,13 @@ for name in RUN_PAGES:
         check(shown == [prompt], f"{job}: request differs from {path}\n  page: {shown}\n  file: {prompt}")
         for pre in re.findall(r'<pre class="evidence">(.*?)</pre>', block, re.S):
             check(plain(pre) == evidence, f"{job}: background differs from {path}")
-    for run in re.findall(r'data-run="([^"]+)"', page):
-        matching = [p for p, _ in blocks if f"/{run}/" in p]
+    # A second run of the same skill is named <skill>--<example file name>, and owns that example.
+    page_runs = re.findall(r'data-run="([^"]+)"', page)
+    owned = {f"/{r.replace('--', '/examples/')}.md" for r in page_runs if "--" in r}
+    for run in page_runs:
+        skill, _, example = run.partition("--")
+        matching = [p for p, _ in blocks if f"/{skill}/" in p
+                    and (p.endswith(f"/{example}.md") if example else not any(p.endswith(o) for o in owned))]
         check(len(matching) == 1, f"{job}: run {run} has no matching example file")
         examples[run] = matching[0] if matching else None
 
@@ -203,16 +208,26 @@ if shutil.which("node"):
         # An orchestrator may only hand work to a real agent from its own list,
         # and the autonomous one must warn before its no-asking Software path runs.
         agents = {os.path.basename(p) for p in glob.glob(os.path.join(ROOT, "agents", "*", "*"))}
+        warning = "From here, this will run to completion with no further approval requests"
         for name in [n for n in runs if n.startswith("request-router-")]:
+            skill, _, example = name.partition("--")
             said = "\n".join(t["text"] for t in runs[name]["turns"] if t["who"] == "AI")
             allowed = set(re.findall(r"^## .*?([a-z-]+-agent\S*)|`([a-z-]+-agent[a-z-]*)`",
-                                     open(os.path.join(ROOT, "orchestrators", name, "references", "target-agents.md"),
+                                     open(os.path.join(ROOT, "orchestrators", skill, "references", "target-agents.md"),
                                           encoding="utf-8").read(), re.M))
             allowed = {a for pair in allowed for a in pair if a} & agents
-            named = set(re.findall(r"\b[a-z]+(?:-[a-z]+)*-agent(?:-controlled|-autonomous)?\b", said)) - {name}
-            check(named and named <= allowed, f"{name}: hands work to {sorted(named)}; its list allows {sorted(allowed)}")
+            named = set(re.findall(r"\b[a-z]+(?:-[a-z]+)*-agent(?:-controlled|-autonomous)?\b", said)) - {skill}
+            # An unclear request must not be handed to anyone: it may only mention options.
+            check((named or example) and named <= allowed,
+                  f"{name}: hands work to {sorted(named)}; its list allows {sorted(allowed)}")
+            if example == "ambiguous-request":
+                # It must say it can't tell, end on its question, and never start the no-asking path.
+                turns = runs[name]["turns"]
+                check("Unclear" in said and turns and turns[-1]["who"] == "AI" and "?" in turns[-1]["text"],
+                      f"{name}: must call the request Unclear and end by asking which one you meant")
+                check(all(t["who"] == "AI" for t in turns) and warning not in said,
+                      f"{name}: must stop at its question, with nothing run or handed over")
         said = "\n".join(t["text"] for t in runs.get("request-router-agent-autonomous", {"turns": []})["turns"])
-        warning = "From here, this will run to completion with no further approval requests"
         check(not said or (warning in said and said.index(warning) < said.find("completed")),
               "request-router-agent-autonomous: its warning must come before the result")
 else:

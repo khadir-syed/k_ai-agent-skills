@@ -58,7 +58,7 @@ Good to know:
 | `skills/index.html` | What a skill is, and one card per job |
 | `skills/find/`, `skills/draft/`, `skills/check/` | One page per job, with a tab per team. All English text is written right in the page |
 | `agents/index.html`, `agents/together/`, `agents/content/`, `agents/software/` | What an agent is, and each agent pair (Product, Content, Software) side by side |
-| `orchestrators/` | The two request routers side by side, both given the same bug |
+| `orchestrators/` | The two request routers side by side: both given the same bug, then a request that fits two agents |
 | `find/`, `draft/`, `check/`, `together/` | Tiny redirects from the old addresses, so links shared earlier still work |
 | `runs/<skill-name>.md` | The recorded runs (see below) |
 | `run.js` | Loads a recorded run and shows it: the start of a long answer, the rest behind "Show all" |
@@ -72,7 +72,8 @@ The pictures are drawn right inside each page (inline SVG) and coloured by
 ## Adding a recorded run
 
 A run file is named after the skill folder, like
-`runs/requirements-gap-investigator.md`. It starts with four header lines,
+`runs/requirements-gap-investigator.md`. A second run of the same skill adds
+its example file's name: `runs/request-router-agent-controlled--ambiguous-request.md`. It starts with four header lines,
 then a blank line, then the AI's reply pasted exactly as it came. The only
 edit allowed is taking out personal details (a folder path on your computer,
 your time zone, names, emails): replace them with something plain like
@@ -121,6 +122,12 @@ the answer back. Record every message the orchestrator says (`codex exec
 The controlled orchestrator's run stops at its handoff: after that it *is*
 `bug-fix-agent`, whose full run is already on the Software page.
 
+Both orchestrators were also given the ambiguous request, once each, in
+the same folder with the broken program and both agents it could go to
+(the autonomous one with the same stand-in and helper, in case it guessed).
+No reply is typed: each run ends at its question. Whatever the first
+recording shows is what goes on the page, even if it guessed wrong.
+
 ## Check it before publishing
 
 From the repo root:
@@ -145,7 +152,9 @@ It checks, with no network:
 - each orchestrator run matches its picture (controlled 1 stop, autonomous
   0), only names agents that exist and are on that orchestrator's own list,
   and the autonomous one gives its "no further approval requests" warning
-  before its result.
+  before its result;
+- each ambiguous-request run calls the request Unclear, ends on its
+  question, and never gives that warning, gets a reply or changes a file.
 
 To look at the pages locally:
 
