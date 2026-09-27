@@ -186,6 +186,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline
 @media (min-width: 720px) { .side-by-side { grid-template-columns: 1fr 1fr; } }
 .side-by-side > * { min-width: 0; }
 .side-by-side ~ p { margin-top: 16px; } /* a note after the runs, same gap as between them */
+[data-example] + .side-by-side { margin-top: 16px; } /* runs straight after a request, same gap */
 .side-title { font-size: 16px; font-weight: 800; margin: 0 0 6px; }
 
 /* AI answers, formatted by markdown.js; "clamped" shows only the first part
