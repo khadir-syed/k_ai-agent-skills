@@ -1,5 +1,8 @@
 # Orchestrators (Stage 3)
 
+> 🌐 **Not a coder? See both orchestrators side by side in your browser, with real runs:**
+> https://khadir-syed.github.io/k_ai-agent-skills/web/orchestrators/
+
 Stage 2 (`agents/`) does *one* job with several steps — find the bug, fix
 it, check it worked; or find the gaps, write the draft, check it's ready —
 with a human approving either every step, or just the final write. An

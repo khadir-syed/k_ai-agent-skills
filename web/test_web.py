@@ -17,7 +17,8 @@ REPO_URL = "https://github.com/khadir-syed/k_ai-agent-skills/tree/main/"
 JOBS = ["find", "draft", "check"]  # the skill pages, under skills/
 TEAMS = ["product", "content", "social", "software"]
 AGENT_PAGES = ["together", "content", "software"]  # one page per agent pair, under agents/
-RUN_PAGES = [f"skills/{job}/index.html" for job in JOBS] + [f"agents/{a}/index.html" for a in AGENT_PAGES]
+RUN_PAGES = ([f"skills/{job}/index.html" for job in JOBS] + [f"agents/{a}/index.html" for a in AGENT_PAGES]
+             + ["orchestrators/index.html"])
 PAGES = ["index.html", "skills/index.html", "agents/index.html"] + RUN_PAGES
 # Old addresses from before the pages moved; each is now a tiny redirect.
 MOVED = {"find": "skills/find", "draft": "skills/draft", "check": "skills/check", "together": "agents/together"}
@@ -65,7 +66,8 @@ for name in PAGES + ["../index.html"] + [f"{old}/index.html" for old in MOVED]:
 
 # ---- Home -> Skills and Agents; Skills -> one card per job page ---------------
 home = read("index.html")
-check('href="skills/"' in home and 'href="agents/"' in home, "home must link to the Skills and Agents pages")
+check(all(f'href="{p}/"' in home for p in ["skills", "agents", "orchestrators"]),
+      "home must link to the Skills, Agents and Orchestrators pages")
 cards = re.findall(r'<a class="job-card j-(\w+)" href="(\w+)/">', read("skills/index.html"))
 check(cards == [(job, job) for job in JOBS], f"skills page cards {cards} don't match the job pages {JOBS}")
 for job in JOBS:
@@ -106,7 +108,7 @@ def example_parts(path):
 examples = {}  # run name -> example file, for the run header check below
 commands = {}  # run name -> the command shown, for a program run
 for name in RUN_PAGES:
-    job = name.split("/")[1]
+    job = os.path.dirname(name)
     page = read(name)
     blocks = re.findall(r'data-example="([^"]+)">(.*?)</(?:section|div)>', page, re.S)
     check(blocks, f"{job}: no request shown")
@@ -192,11 +194,27 @@ if shutil.which("node"):
         # Each agent page's picture gives a number of stops: the real runs must agree.
         pictured = {"feature-launch-readiness-agent-controlled": 3, "feature-launch-readiness-agent-autonomous": 1,
                     "content-publish-readiness-agent-controlled": 3, "content-publish-readiness-agent-autonomous": 1,
-                    "bug-fix-agent": 2, "test-fix-loop-agent": 0}
+                    "bug-fix-agent": 2, "test-fix-loop-agent": 0,
+                    "request-router-agent-controlled": 1, "request-router-agent-autonomous": 0}
         for name, want in pictured.items():
             if name in runs:
                 got = sum(t["who"] == "YOU" for t in runs[name]["turns"])
                 check(got == want, f"{name} stopped {got} times; its page's picture says {want}")
+        # An orchestrator may only hand work to a real agent from its own list,
+        # and the autonomous one must warn before its no-asking Software path runs.
+        agents = {os.path.basename(p) for p in glob.glob(os.path.join(ROOT, "agents", "*", "*"))}
+        for name in [n for n in runs if n.startswith("request-router-")]:
+            said = "\n".join(t["text"] for t in runs[name]["turns"] if t["who"] == "AI")
+            allowed = set(re.findall(r"^## .*?([a-z-]+-agent\S*)|`([a-z-]+-agent[a-z-]*)`",
+                                     open(os.path.join(ROOT, "orchestrators", name, "references", "target-agents.md"),
+                                          encoding="utf-8").read(), re.M))
+            allowed = {a for pair in allowed for a in pair if a} & agents
+            named = set(re.findall(r"\b[a-z]+(?:-[a-z]+)*-agent(?:-controlled|-autonomous)?\b", said)) - {name}
+            check(named and named <= allowed, f"{name}: hands work to {sorted(named)}; its list allows {sorted(allowed)}")
+        said = "\n".join(t["text"] for t in runs.get("request-router-agent-autonomous", {"turns": []})["turns"])
+        warning = "From here, this will run to completion with no further approval requests"
+        check(not said or (warning in said and said.index(warning) < said.find("completed")),
+              "request-router-agent-autonomous: its warning must come before the result")
 else:
     print("(node not installed: skipped the run-formatting checks)")
 

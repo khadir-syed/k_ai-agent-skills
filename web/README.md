@@ -12,7 +12,8 @@ The site follows the repo's three parts:
   - Product team — Do the whole job with me: [`agents/together/`](agents/together/)
   - Content team — Get a post ready to publish: [`agents/content/`](agents/content/)
   - Software team — Find and fix a bug: [`agents/software/`](agents/software/)
-- **Orchestrators:** explained on the home page; page coming soon
+- **Orchestrators:** https://khadir-syed.github.io/k_ai-agent-skills/web/orchestrators/
+  - Send it to the right agent: [`orchestrators/`](orchestrators/)
 
 ## What is this?
 
@@ -32,9 +33,10 @@ export button", and each job moves it one step closer to launch.
 flowchart TD
     H["Home: the repo in 3 parts"] --> S["Skills"]
     H --> A["Agents"]
-    H -.-> O["Orchestrators<br/>(coming soon)"]
+    H --> O["Orchestrators"]
     S --> F["Job 1<br/>Find what's missing"] & D["Job 2<br/>Write a first draft"] & C["Job 3<br/>Is it ready?"]
     A --> T["Agent pairs for Product, Content, Software:<br/>jobs 1 → 2 → 3 for you"]
+    O --> R["Router pair: picks the agent<br/>for your request"]
 ```
 
 Good to know:
@@ -56,6 +58,7 @@ Good to know:
 | `skills/index.html` | What a skill is, and one card per job |
 | `skills/find/`, `skills/draft/`, `skills/check/` | One page per job, with a tab per team. All English text is written right in the page |
 | `agents/index.html`, `agents/together/`, `agents/content/`, `agents/software/` | What an agent is, and each agent pair (Product, Content, Software) side by side |
+| `orchestrators/` | The two request routers side by side, both given the same bug |
 | `find/`, `draft/`, `check/`, `together/` | Tiny redirects from the old addresses, so links shared earlier still work |
 | `runs/<skill-name>.md` | The recorded runs (see below) |
 | `run.js` | Loads a recorded run and shows it: the start of a long answer, the rest behind "Show all" |
@@ -109,6 +112,15 @@ with `-p "<prompt>"` (Claude Code's style); to record it with Codex like the
 other runs, point `--cli` at a two-line script that passes the prompt to
 `codex exec` instead, and say so on the page.
 
+The autonomous orchestrator runs that same program itself, from inside its
+AI's sandbox, which has no internet. To record it, put a stand-in `claude`
+first on the sandbox's `PATH` that only leaves the prompt as a note in the
+folder; a helper outside the sandbox passes each note to Codex and writes
+the answer back. Record every message the orchestrator says (`codex exec
+--json`), not only its last one, so its warning before the run is kept.
+The controlled orchestrator's run stops at its handoff: after that it *is*
+`bug-fix-agent`, whose full run is already on the Software page.
+
 ## Check it before publishing
 
 From the repo root:
@@ -129,7 +141,11 @@ It checks, with no network:
   (this part needs `node`);
 - each agent pair's runs match its page's picture: Product and Content
   controlled 3 stops, autonomous 1; Software controlled 2, the loop program 0;
-- the command shown for the loop program is the one its run shows.
+- the command shown for the loop program is the one its run shows;
+- each orchestrator run matches its picture (controlled 1 stop, autonomous
+  0), only names agents that exist and are on that orchestrator's own list,
+  and the autonomous one gives its "no further approval requests" warning
+  before its result.
 
 To look at the pages locally:
 

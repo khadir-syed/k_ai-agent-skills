@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Only this site's own files and the GitHub profile photo (the tab icon)
+       may load. Nothing on this page sends data anywhere. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; connect-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="An orchestrator reads your request and sends it to the right AI agent. One checks its choice with you first; one doesn't, but says so out loud. See real recorded runs side by side.">
+  <title>Send it to the right agent — k_ai-agent-skills</title>
+  <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=64">
+  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/15974849?v=4&amp;s=180">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../markdown.js" defer></script>
+  <script src="../run.js" defer></script>
+</head>
+<body class="j-together">
+  <!-- All English text lives right here, so the page reads instantly.
+       data-t names each piece for future translations. -->
+  <main class="wrap">
+    <a class="back" href="../">← Home</a>
+    <header class="hero">
+      <span class="badge job" data-t="badge">Orchestrators · Request Router</span>
+      <h1 data-t="title">Send it to the right agent</h1>
+      <p class="subtitle" data-t="subtitle">Same request, two orchestrators: one checks its choice with you, one doesn't — but says so first</p>
+    </header>
+
+    <section class="card">
+      <p data-t="intro_1">Think of the head waiter in a restaurant. You say what you'd like in your own words, and they send the order to the right cook. The head waiter never cooks — and they don't get to tell the cook to skip the safety rules either.</p>
+      <p data-t="intro_2">An <b>orchestrator</b> is that head waiter for <a class="inline-link" href="../agents/">AI agents</a>. You describe your problem; it works out whether it's a bug, a feature launch or a blog post, and hands it to that team's agent. Its only job is that one choice. The <b>controlled</b> one stops to check its choice with you. The <b>autonomous</b> one doesn't — so for a bug, which it hands to a program that never asks anything, it must first warn you out loud.</p>
+      <p class="plain-words" data-t="plain"><b>In plain words:</b> both got the same broken program as the <a class="inline-link" href="../agents/software/">bug-fixing agents</a>: a <b>test</b> checks that a spreadsheet file (CSV) starts with <code>Name,Email,ID</code>, and it fails because the program forgot the <code>ID</code> column.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-t="compare_heading">One request, two ways</h2>
+      <svg class="picture" viewBox="0 0 360 330" role="img" aria-labelledby="pic-title pic-desc">
+        <title id="pic-title">Controlled vs autonomous</title>
+        <desc id="pic-desc">The controlled orchestrator picks the agent, then stops to ask if it may send the request there. Once you say yes, it hands over and becomes that agent, with all of that agent's own stops: 1 stop of its own. The autonomous orchestrator picks the agent, then warns that it will now run to the end without asking. It runs the bug-fixing program, checks what the program changed, and reports back: 0 stops. Both stop and ask if they can't tell which agent fits.</desc>
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="tip" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+        <text x="91" y="24" text-anchor="middle">Controlled</text>
+        <text x="269" y="24" text-anchor="middle">Autonomous</text>
+        <rect class="hot" x="10" y="40" width="162" height="40" rx="10"/>
+        <text class="sub" x="91" y="65" text-anchor="middle">1  Pick the agent</text>
+        <rect class="stop" x="22" y="92" width="138" height="30" rx="15"/>
+        <text class="stop-text" x="91" y="112" text-anchor="middle">Stop: OK to send?</text>
+        <rect class="hot" x="10" y="134" width="162" height="40" rx="10"/>
+        <text class="sub" x="91" y="159" text-anchor="middle">2  Hand it over</text>
+        <path class="line" d="M91,174 V190" marker-end="url(#arrow)"/>
+        <rect class="box" x="10" y="196" width="162" height="56" rx="10"/>
+        <text class="sub" x="91" y="219" text-anchor="middle">becomes the agent,</text>
+        <text class="sub" x="91" y="239" text-anchor="middle">with its own stops</text>
+        <text x="91" y="318" text-anchor="middle">1 stop of its own</text>
+        <rect class="hot" x="188" y="40" width="162" height="40" rx="10"/>
+        <text class="sub" x="269" y="65" text-anchor="middle">1  Pick the agent</text>
+        <rect class="box" x="200" y="92" width="138" height="30" rx="15"/>
+        <text class="stop-text" x="269" y="112" text-anchor="middle">Warns: won't ask</text>
+        <rect class="hot" x="188" y="134" width="162" height="40" rx="10"/>
+        <text class="sub" x="269" y="159" text-anchor="middle">2  Run the fix program</text>
+        <path class="line" d="M269,174 V190" marker-end="url(#arrow)"/>
+        <rect class="hot" x="188" y="196" width="162" height="40" rx="10"/>
+        <text class="sub" x="269" y="221" text-anchor="middle">3  Check what changed</text>
+        <path class="line" d="M269,236 V252" marker-end="url(#arrow)"/>
+        <rect class="hot" x="188" y="258" width="162" height="40" rx="10"/>
+        <text class="sub" x="269" y="283" text-anchor="middle">4  Report back</text>
+        <text x="269" y="318" text-anchor="middle">0 stops</text>
+      </svg>
+      <p data-t="compare_1"><b>Controlled</b> stops once, to check its choice. After you say yes, it steps aside: from then on it simply <i>is</i> the bug-fixing agent, and that agent still asks at each of its own stops.</p>
+      <p data-t="compare_2"><b>Autonomous</b> never stops to ask. For a bug, it first says plainly that nothing more will be asked, then runs the program that fixes the bug on its own, checks what the program changed, and tells you the result.</p>
+      <p data-t="compare_3">Both have one place where they must stop: when a request could belong to two agents — "the export isn't working right for next week's launch" could be a bug or an unfinished launch — they're told to ask which you mean instead of guessing.</p>
+      <p class="lesson" data-t="lesson">The lesson: whoever hands out the work can't switch off the checks further down the line. And when something is about to run without asking you, you should be told before it starts, not after.</p>
+    </section>
+
+    <section class="card" id="asked">
+      <h2 data-t="asked_heading">What we gave both orchestrators</h2>
+      <p data-t="asked_intro">The same small broken program, in a folder of its own, with the agents they can hand work to: <code>export.py</code> builds the column names, and <code>test_export.py</code> checks them.</p>
+      <pre class="evidence" data-t="files">export.py
+HEADER_FIELDS = ["Name", "Email"]
+
+def build_csv_header():
+    return ",".join(HEADER_FIELDS)
+
+test_export.py
+import unittest
+from export import build_csv_header
+
+class TestExport(unittest.TestCase):
+    def test_csv_header(self):
+        self.assertEqual(build_csv_header(), "Name,Email,ID")
+
+if __name__ == "__main__":
+    unittest.main()</pre>
+      <div data-example="orchestrators/request-router-agent-controlled/examples/software-bug-request.md">
+        <p class="try-label" data-t="asked_controlled">To the controlled orchestrator:</p>
+        <p class="prompt">Use the request-router-agent-controlled skill: our CSV export test `test_csv_header` is failing — expected `Name,Email,ID`, got `Name,Email`. Can someone look into this?</p>
+      </div>
+      <div data-example="orchestrators/request-router-agent-autonomous/examples/software-bug-request.md">
+        <p class="try-label" data-t="asked_autonomous">To the autonomous orchestrator:</p>
+        <p class="prompt">Use the request-router-agent-autonomous skill: our CSV export test `test_csv_header` is failing. Run `python3 -m unittest -q` to check.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 data-t="runs_heading">What the real orchestrators did</h2>
+      <p data-t="runs_intro">Two real runs, one per orchestrator. Each time the controlled one stopped to ask, the reply typed back is shown too. The autonomous run ends with <code>export.py</code> as it was left.</p>
+      <div class="side-by-side">
+        <div class="run" id="run-controlled" data-run="request-router-agent-controlled"
+             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
+             data-ai="The orchestrator" data-you="Reply typed back" data-file="The file at the end:"
+             data-show="Show all" data-less="Show less"
+             data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
+             data-missing="This real run hasn't been added yet."
+             data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <p class="side-title">Controlled</p>
+          <p class="stops"></p>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+        </div>
+        <div class="run" id="run-autonomous" data-run="request-router-agent-autonomous"
+             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
+             data-ai="The orchestrator" data-you="Reply typed back" data-file="The file at the end:"
+             data-show="Show all" data-less="Show less"
+             data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
+             data-stops-none="In this run, it never stopped to ask."
+             data-missing="This real run hasn't been added yet."
+             data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
+          <p class="side-title">Autonomous</p>
+          <p class="stops"></p>
+          <p class="run-meta"></p>
+          <ol class="turns"></ol>
+          <p class="run-status muted" role="status">Loading the recorded run…</p>
+        </div>
+      </div>
+      <noscript><p class="warning">Showing the recorded runs needs JavaScript switched on in your browser.</p></noscript>
+      <p class="plain-words" data-t="reading_controlled"><b>Reading the controlled run:</b> it named the agent, said why, and asked. After "Yes, go ahead." look at the next question: that's the bug-fixing agent's own first stop. The orchestrator's yes didn't skip it. We stopped the run there, because the rest is exactly the <a class="inline-link" href="../agents/software/">bug-fixing agent's run</a>.</p>
+      <p class="plain-words" data-t="reading_autonomous"><b>Reading the autonomous run:</b> it gave its warning — "this will run to completion with no further approval requests" — before running anything. The program then fixed the bug on its own. Before reporting, the orchestrator checked the change was to the program, not the test: in <a class="inline-link" href="../agents/software/">an earlier test</a>, this same program once made a test "pass" by changing the test.</p>
+    </section>
+
+    <section class="card links">
+      <p class="muted" data-t="private_note">This page never talks to an AI. It shows runs that were recorded earlier, exactly as the orchestrators wrote them — except one personal detail we took out: a folder name on our computer. The bug-fixing program is built to call Claude Code; to record it with the same AI as every other run on this site, a tiny go-between passed its request to Codex instead. The AI running the orchestrator had no internet: the go-between only left the request as a note in its folder, and a helper outside passed it on.</p>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/orchestrators/request-router-agent-controlled" rel="noopener noreferrer" data-t="controlled_link">See the controlled orchestrator's recipe card on GitHub</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/orchestrators/request-router-agent-autonomous" rel="noopener noreferrer" data-t="autonomous_link">See the autonomous orchestrator's recipe card on GitHub</a>
+      <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/orchestrators#try-the-samples" rel="noopener noreferrer" data-t="install_link">Try them yourself</a>
+    </section>
+
+    <footer class="footer" data-t="footer">Learning should not stop.</footer>
+  </main>
+</body>
+</html>

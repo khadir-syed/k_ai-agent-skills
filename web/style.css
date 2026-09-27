@@ -249,6 +249,3 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline
 
 /* Home page: the three parts of the repo */
 .part-card { --job: var(--amber); }
-.part-card.soon { cursor: default; }
-.part-card.soon:hover { border-color: var(--line); background: var(--card); }
-.part-card.soon:hover .job-title { color: var(--text); }
