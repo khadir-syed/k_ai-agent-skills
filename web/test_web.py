@@ -64,6 +64,15 @@ for name in PAGES + ["../index.html"] + [f"{old}/index.html" for old in MOVED]:
     for target in re.findall(r'href="' + re.escape(REPO_URL) + r'([^"#]+)"', page):
         check(os.path.isdir(os.path.join(ROOT, target)), f"{name}: GitHub link to missing folder {target}")
 
+# ---- "In short": every page opens with a part a 7-year-old can read alone ----
+for name in PAGES:
+    easy = re.findall(r'<section class="card easy"[^>]*>(.*?)</section>', read(name), re.S)
+    check(len(easy) == 1 and read(name).index("card easy") < read(name).index('<section class="card"'),
+          f"{name}: needs one 'In short' part, before the rest of the page")
+    lines = re.findall(r"<p>(.*?)</p>", easy[0]) if easy else []
+    for sentence in (s for line in lines for s in re.split(r"(?<=[.?!])\s+", plain(line))):
+        check(len(sentence.split()) <= 10, f"{name}: 'In short' sentence too long for a young reader: {sentence!r}")
+
 # ---- Home -> Skills and Agents; Skills -> one card per job page ---------------
 home = read("index.html")
 check(all(f'href="{p}/"' in home for p in ["skills", "agents", "orchestrators"]),

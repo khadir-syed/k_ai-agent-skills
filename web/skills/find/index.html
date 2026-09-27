@@ -27,6 +27,14 @@
       <p class="subtitle" data-t="subtitle">Ask the questions before anyone writes the plan or fixes anything</p>
     </header>
 
+    <section class="card easy" data-t="easy">
+      <p class="easy-label">In short</p>
+      <p>Before you build something, you ask questions.</p>
+      <p>This AI helper does not guess.</p>
+      <p>It writes down what nobody has told it yet.</p>
+      <p>Then it stops and asks you.</p>
+    </section>
+
     <section class="card">
       <p data-t="intro_1">Imagine you tell a builder: "I want a new kitchen." A good builder doesn't start knocking down walls. First they ask: gas or electric? How many people cook here? Where do the plugs go? And they tell you which answers only you can give.</p>
       <p data-t="intro_2">These skills are that good builder. Someone asks for something in one line — or says something went wrong. Before anyone writes a plan or fixes anything, the AI lists what's actually known, what's missing, and who could fill each gap. When something went wrong, it compares the possible causes and says how sure it is.</p>
@@ -61,7 +69,7 @@
         <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="tip" d="M0,0 L10,5 L0,10 z"/></marker></defs>
         <rect class="box" x="30" y="8" width="300" height="58" rx="12"/>
         <text x="180" y="32" text-anchor="middle">A vague request, or a problem</text>
-        <text class="sub" x="180" y="52" text-anchor="middle">"Can we get an export?" · "Why did it flop?"</text>
+        <text class="sub" x="180" y="52" text-anchor="middle">"Can we get an export?" · "Why did it do badly?"</text>
         <path class="line" d="M180,66 V90" marker-end="url(#arrow)"/>
         <rect class="hot" x="30" y="96" width="300" height="44" rx="12"/>
         <text x="180" y="124" text-anchor="middle">Find what's missing</text>
@@ -121,7 +129,7 @@
             </li>
             <li class="ex weak">
               <p class="ex-say">❌ "Add a CSV export button."</p>
-              <p class="ex-why">Weak: nobody asked for CSV. It made that up and dressed it as a fact.</p>
+              <p class="ex-why">Weak: nobody asked for CSV. It made that up and wrote it as if it were a fact.</p>
             </li>
             <li class="ex weak">
               <p class="ex-say">❌ "This is unclear."</p>
@@ -145,8 +153,8 @@ No further detail in the ticket. No mention of file format, which
 report(s), permissions, or whether this applies to the mobile app.</pre>
         </section>
         <section class="card run" data-run="requirements-gap-investigator"
-                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
-                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+                 data-ai="The AI answered" data-you="We replied" data-file="The AI saved"
                  data-show="Show all" data-less="Show less"
                  data-missing="This real run hasn't been added yet."
                  data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
@@ -201,8 +209,8 @@ email? social post?), channel, target length, audience, or what
 "exciting" should mean in terms of tone.</pre>
         </section>
         <section class="card run" data-run="content-brief-gap-investigator"
-                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
-                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+                 data-ai="The AI answered" data-you="We replied" data-file="The AI saved"
                  data-show="Show all" data-less="Show less"
                  data-missing="This real run hasn't been added yet."
                  data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
@@ -238,7 +246,7 @@ email? social post?), channel, target length, audience, or what
               <p class="ex-why">Weak: its job was to find out why, not to write a new post.</p>
             </li>
           </ul>
-          <p class="lesson" data-t="social_lesson">The lesson: "why did it flop?" deserves evidence, not the first theory that sounds right.</p>
+          <p class="lesson" data-t="social_lesson">The lesson: "why did it do badly?" deserves proof, not the first theory that sounds right.</p>
         </section>
         <section class="card" data-example="skills/socialmedia/post-performance-investigator/examples/underperforming-launch-post.md">
           <h2 data-t="asked_heading">What we gave the AI</h2>
@@ -263,8 +271,8 @@ whether any competing content was posted by others that morning.</pre>
           <p class="muted" data-t="social_note">"Reach" is how many different people saw the post. A "carousel" is a post you swipe through, picture by picture.</p>
         </section>
         <section class="card run" data-run="post-performance-investigator"
-                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
-                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+                 data-ai="The AI answered" data-you="We replied" data-file="The AI saved"
                  data-show="Show all" data-less="Show less"
                  data-missing="This real run hasn't been added yet."
                  data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
@@ -290,7 +298,7 @@ whether any competing content was posted by others that morning.</pre>
             </li>
             <li class="ex good">
               <p class="ex-say">✅ "Probable, not proven: nobody looked at the page's code or the live site. Next check, not done: see which name the page reads."</p>
-              <p class="ex-why">Good: honest about how sure it is, and it changes nothing.</p>
+              <p class="ex-why">Good: honest about how sure it is ("probable" means very likely), and it changes nothing.</p>
             </li>
             <li class="ex weak">
               <p class="ex-say">❌ "The website is broken."</p>
@@ -333,8 +341,8 @@ The API response contract was changed last week from an `orders` property to an 
           <p class="muted" data-t="software_note">"API" is the server's side of the conversation; "UI" is the page you see. The <code>###</code> and <code>```</code> marks are just how the example file labels its parts.</p>
         </section>
         <section class="card run" data-run="root-cause-investigator"
-                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
-                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+                 data-ai="The AI answered" data-you="We replied" data-file="The AI saved"
                  data-show="Show all" data-less="Show less"
                  data-missing="This real run hasn't been added yet."
                  data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
@@ -343,7 +351,7 @@ The API response contract was changed last week from an `orders` property to an 
           <ol class="turns"></ol>
           <p class="run-status muted" role="status">Loading the recorded run…</p>
           <noscript><p class="warning">Showing the recorded run needs JavaScript switched on in your browser.</p></noscript>
-          <p class="plain-words" data-t="software_notice"><b>Worth noticing:</b> in this run the AI called the cause "established", with "High" confidence. It found the right cause, but nobody looked at the page's actual code — so "probable", as in the good answer above, would have been more honest. Even a good answer is worth reading with care.</p>
+          <p class="plain-words" data-t="software_notice"><b>Worth noticing:</b> in this run the AI called the cause "established" (proven), with "High" confidence (very sure). It found the right cause, but nobody looked at the page's actual code — so "probable", as in the good answer above, would have been more honest. Even a good answer is worth reading with care.</p>
           <a class="link-card" href="https://github.com/khadir-syed/k_ai-agent-skills/tree/main/skills/software/root-cause-investigator" rel="noopener noreferrer" data-t="software_link">See this skill's recipe card on GitHub</a>
         </section>
       </div>

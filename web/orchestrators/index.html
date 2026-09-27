@@ -27,6 +27,15 @@
       <p class="subtitle" data-t="subtitle">Same request, two orchestrators: one checks its choice with you, one doesn't — but says so first</p>
     </header>
 
+    <section class="card easy" data-t="easy">
+      <p class="easy-label">In short</p>
+      <p>A restaurant has many cooks.</p>
+      <p>A waiter listens to you and picks the right cook.</p>
+      <p>One waiter asks you, "Is this OK?"</p>
+      <p>The other waiter does not ask, but tells you first.</p>
+      <p>If they can't tell what you mean, both ask.</p>
+    </section>
+
     <section class="card">
       <p data-t="intro_1">Think of the head waiter in a restaurant. You say what you'd like in your own words, and they send the order to the right cook. The head waiter never cooks — and they don't get to tell the cook to skip the safety rules either.</p>
       <p data-t="intro_2">An <b>orchestrator</b> is that head waiter for <a class="inline-link" href="../agents/">AI agents</a>. You describe your problem; it works out whether it's a bug, a feature launch or a blog post, and hands it to that team's agent. Its only job is that one choice. The <b>controlled</b> one stops to check its choice with you. The <b>autonomous</b> one doesn't — so for a bug, which it hands to a program that never asks anything, it must first warn you out loud.</p>
@@ -69,7 +78,7 @@
       <p data-t="compare_1"><b>Controlled</b> stops once, to check its choice. After you say yes, it steps aside: from then on it simply <i>is</i> the bug-fixing agent, and that agent still asks at each of its own stops.</p>
       <p data-t="compare_2"><b>Autonomous</b> never stops to ask. For a bug, it first says plainly that nothing more will be asked, then runs the program that fixes the bug on its own, checks what the program changed, and tells you the result.</p>
       <p data-t="compare_3">Both have one place where they must stop: when a request could belong to two agents — "the export isn't working right for next week's launch" could be a bug or an unfinished launch — they're told to ask which you mean instead of guessing. <a class="inline-link" href="#unclear">See it happen below.</a></p>
-      <p class="lesson" data-t="lesson">The lesson: whoever hands out the work can't switch off the checks further down the line. And when something is about to run without asking you, you should be told before it starts, not after.</p>
+      <p class="lesson" data-t="lesson">The lesson: whoever hands out the work can't switch off the checks that come after it. And when something is about to run without asking you, you should be told before it starts, not after.</p>
     </section>
 
     <section class="card" id="asked">
@@ -103,11 +112,11 @@ if __name__ == "__main__":
 
     <section class="card">
       <h2 data-t="runs_heading">What the real orchestrators did</h2>
-      <p data-t="runs_intro">Two real runs, one per orchestrator. Each time the controlled one stopped to ask, the reply typed back is shown too. The autonomous run ends with <code>export.py</code> as it was left.</p>
+      <p data-t="runs_intro">Two real runs, one per orchestrator. Each time the controlled one stopped to ask, our reply is shown too. The autonomous run ends with <code>export.py</code> as it was left.</p>
       <div class="side-by-side">
         <div class="run" id="run-controlled" data-run="request-router-agent-controlled"
-             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
-             data-ai="The orchestrator" data-you="Reply typed back" data-file="The file at the end:"
+             data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+             data-ai="The orchestrator" data-you="We replied" data-file="The file at the end:"
              data-show="Show all" data-less="Show less"
              data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
              data-missing="This real run hasn't been added yet."
@@ -119,8 +128,8 @@ if __name__ == "__main__":
           <p class="run-status muted" role="status">Loading the recorded run…</p>
         </div>
         <div class="run" id="run-autonomous" data-run="request-router-agent-autonomous"
-             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
-             data-ai="The orchestrator" data-you="Reply typed back" data-file="The file at the end:"
+             data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+             data-ai="The orchestrator" data-you="We replied" data-file="The file at the end:"
              data-show="Show all" data-less="Show less"
              data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
              data-stops-none="In this run, it never stopped to ask."
@@ -135,7 +144,7 @@ if __name__ == "__main__":
       </div>
       <noscript><p class="warning">Showing the recorded runs needs JavaScript switched on in your browser.</p></noscript>
       <p class="plain-words" data-t="reading_controlled"><b>Reading the controlled run:</b> it named the agent, said why, and asked. After "Yes, go ahead." look at the next question: that's the bug-fixing agent's own first stop. The orchestrator's yes didn't skip it. We stopped the run there, because the rest is exactly the <a class="inline-link" href="../agents/software/">bug-fixing agent's run</a>.</p>
-      <p class="plain-words" data-t="reading_autonomous"><b>Reading the autonomous run:</b> it gave its warning — "this will run to completion with no further approval requests" — before running anything. The program then fixed the bug on its own. Before reporting, the orchestrator checked the change was to the program, not the test: in <a class="inline-link" href="../agents/software/">an earlier test</a>, this same program once made a test "pass" by changing the test.</p>
+      <p class="plain-words" data-t="reading_autonomous"><b>Reading the autonomous run:</b> it gave its warning — "this will run to completion with no further approval requests" — before running anything. The program then fixed the bug on its own. Before reporting, the orchestrator checked the change was to the program, not the test: in <a class="inline-link" href="../agents/software/">an earlier try</a>, this same program once made a test "pass" by changing the test.</p>
     </section>
 
     <section class="card" id="unclear">
@@ -152,8 +161,8 @@ if __name__ == "__main__":
       </div>
       <div class="side-by-side">
         <div class="run" id="run-controlled-unclear" data-run="request-router-agent-controlled--ambiguous-request"
-             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
-             data-ai="The orchestrator" data-you="Reply typed back" data-file="The file at the end:"
+             data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+             data-ai="The orchestrator" data-you="We replied" data-file="The file at the end:"
              data-show="Show all" data-less="Show less"
              data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
              data-stops-none="It stopped here to ask which one you meant."
@@ -166,8 +175,8 @@ if __name__ == "__main__":
           <p class="run-status muted" role="status">Loading the recorded run…</p>
         </div>
         <div class="run" id="run-autonomous-unclear" data-run="request-router-agent-autonomous--ambiguous-request"
-             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
-             data-ai="The orchestrator" data-you="Reply typed back" data-file="The file at the end:"
+             data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+             data-ai="The orchestrator" data-you="We replied" data-file="The file at the end:"
              data-show="Show all" data-less="Show less"
              data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
              data-stops-none="It stopped here to ask which one you meant."

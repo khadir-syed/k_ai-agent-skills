@@ -27,6 +27,14 @@
       <p class="subtitle" data-t="subtitle">It writes, you check, and nothing is saved until you say yes</p>
     </header>
 
+    <section class="card easy" data-t="easy">
+      <p class="easy-label">In short</p>
+      <p>The AI writes a first try for you.</p>
+      <p>It shows it to you first.</p>
+      <p>It only saves it when you say yes.</p>
+      <p>It never makes up facts.</p>
+    </section>
+
     <section class="card">
       <p data-t="intro_1">Imagine asking a friend to write a birthday card for you. They write it, hand it to you to read, and only put it in the envelope once you say "yes, that's good". If they wrote "Happy 40th!" when you never said an age, you'd want to catch that before it's sent.</p>
       <p data-t="intro_2">These skills write a first draft from notes you give them: part of a product plan, a blog post's opening, a social media post, or a "what's new" list. They show you the draft first, and save the file only after your yes. Anything your notes don't say, they mark as an open question instead of making it up.</p>
@@ -136,10 +144,11 @@
   data into a spreadsheet" (currently ~15/month).
 - Out of scope for this release: PDF export, mobile app, scheduled exports.
 - No target file exists yet — create PRD.md.</pre>
+          <p class="muted" data-t="product_note">A "CSV" is a simple file that opens in a spreadsheet. The "Analyst" role is one kind of user account.</p>
         </section>
         <section class="card run" data-run="prd-draft-assistant"
-                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
-                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+                 data-ai="The AI answered" data-you="We replied" data-file="The AI saved"
                  data-show="Show all" data-less="Show less"
                  data-missing="This real run hasn't been added yet."
                  data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
@@ -186,10 +195,11 @@
 Audience: existing customers who requested it (per support tickets).
 Tone: short, matter-of-fact, no hype language.
 Format: blog post, this is the intro paragraph only.</pre>
+          <p class="muted" data-t="content_note">A "CSV" is a simple file that opens in a spreadsheet. A "brief" is a short note that says what to write.</p>
         </section>
         <section class="card run" data-run="content-draft-assistant"
-                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
-                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+                 data-ai="The AI answered" data-you="We replied" data-file="The AI saved"
                  data-show="Show all" data-less="Show less"
                  data-missing="This real run hasn't been added yet."
                  data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
@@ -240,8 +250,8 @@ Link: changelog entry (URL supplied separately).</pre>
           <p class="muted" data-t="social_note">A "caption" is the text that goes with a social media post. The notes say the link comes separately — so a good draft leaves a gap for it rather than inventing one.</p>
         </section>
         <section class="card run" data-run="social-caption-drafter"
-                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
-                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+                 data-ai="The AI answered" data-you="We replied" data-file="The AI saved"
                  data-show="Show all" data-less="Show less"
                  data-missing="This real run hasn't been added yet."
                  data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">
@@ -259,7 +269,15 @@ Link: changelog entry (URL supplied separately).</pre>
         <section class="card">
           <h2 data-t="software_good_heading">A good draft vs a weak one</h2>
           <p data-t="software_skill">The Software team's skill is the <span class="skill-name">Changelog Entry Drafter</span>. It writes the "what's new" note for the next version of a program. This is what we built it to do — and the kind of draft it must avoid.</p>
-          <p class="plain-words" data-t="software_plain"><b>In plain words:</b> programmers save their work in small steps called <b>commits</b>, each with a one-line note. A <b>changelog</b> is the "what's new" list people read when a new version comes out. <b>v1.3.0</b> and <b>v1.4.0</b> are version numbers, like the edition of a book. The notes start with <b>feat</b> (something new), <b>fix</b> (a repair) or <b>chore</b> (tidying up behind the scenes).</p>
+          <div class="plain-words" data-t="software_plain">
+            <p><b>In plain words:</b></p>
+            <ul class="checks">
+              <li>A <b>commit</b> is one small saved step of a programmer's work, with a one-line note.</li>
+              <li>A <b>changelog</b> is the "what's new" list people read when a new version comes out.</li>
+              <li><b>v1.3.0</b> and <b>v1.4.0</b> are version numbers, like the edition of a book.</li>
+              <li>Each note starts with <b>feat</b> (something new), <b>fix</b> (a repair) or <b>chore</b> (tidying up behind the scenes, like "bump lint config").</li>
+            </ul>
+          </div>
           <ul class="examples">
             <li class="ex good">
               <p class="ex-say">✅ "Added: a CSV export option on the reports page. Fixed: the time zone in report exports; a crash when the project list is empty."</p>
@@ -291,8 +309,8 @@ h7i8j9k chore: bump lint config
 k1l2m3n fix: handle empty project list without crashing</pre>
         </section>
         <section class="card run" data-run="changelog-entry-drafter"
-                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will differ."
-                 data-ai="The AI answered" data-you="You replied" data-file="The AI saved"
+                 data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+                 data-ai="The AI answered" data-you="We replied" data-file="The AI saved"
                  data-show="Show all" data-less="Show less"
                  data-missing="This real run hasn't been added yet."
                  data-failed="Sorry — the recorded run couldn't load. Check your internet connection and refresh the page.">

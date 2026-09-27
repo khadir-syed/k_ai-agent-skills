@@ -23,6 +23,11 @@ instead. Each page takes one job, explains it with an everyday comparison,
 draws it as a picture, and then shows a **real recorded run**: exactly what
 we asked a real AI, and exactly what it answered.
 
+Every page is written for two readers. It opens with an **In short** part
+that a 7-year-old can read alone: a few very short sentences. Everything
+below it is written so a 12-year-old can follow it, with every new word
+explained where it first appears.
+
 The skill pages are sorted by the job you need done, not by how the repo's
 folders are laid out. Each job page explains the job once, then has a tab
 per team (Product, Content, Social media, Software) with that team's skill,
@@ -138,6 +143,8 @@ python3 web/test_web.py
 
 It checks, with no network:
 
+- every page opens with one **In short** part, and no sentence in it is
+  longer than 10 words;
 - every page keeps its strict safety rules (no inline scripts or styles, no
   scripts from other sites) and every link leads somewhere real;
 - each request shown on a page matches the repo's example file word for word;

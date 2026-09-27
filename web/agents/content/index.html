@@ -27,6 +27,14 @@
       <p class="subtitle" data-t="subtitle">Same job, two agents: one asks after every step, one asks once</p>
     </header>
 
+    <section class="card easy" data-t="easy">
+      <p class="easy-label">In short</p>
+      <p>Two AI helpers write the same blog post.</p>
+      <p>One asks you after every step.</p>
+      <p>The other only asks before it saves.</p>
+      <p>Look at both of them below.</p>
+    </section>
+
     <section class="card">
       <p data-t="intro_1">Think of two writers helping you. A new one checks with you after every step: "Here's what I'm missing — shall I start writing?" An experienced one works alone through the routine parts, but still shows you the post before it goes anywhere.</p>
       <p data-t="intro_2">An <b>agent</b> is an AI that does several steps in a row. Both agents here do the same 3 skill jobs: <a class="inline-link" href="../../skills/find/">find what's missing</a>, <a class="inline-link" href="../../skills/draft/">write a first draft</a> (a blog post, saved as a file) and <a class="inline-link" href="../../skills/check/">run the 6 publish checks</a>. The only difference is how often they stop to ask you.</p>
@@ -66,7 +74,7 @@
         <text class="sub" x="269" y="302" text-anchor="middle">done</text>
         <text x="269" y="346" text-anchor="middle">1 stop</text>
       </svg>
-      <p data-t="compare_1"><b>Controlled</b> stops after every step. It even refuses "just do it all at once" — the stops are the whole point of this version.</p>
+      <p data-t="compare_1"><b>Controlled</b> stops after every step. It even refuses "just do it all at once" — the stops are what this version is for.</p>
       <p data-t="compare_2"><b>Autonomous</b> doesn't stop between routine steps, but it still asks before it saves the file. Fewer stops doesn't mean fewer rules.</p>
       <p class="lesson" data-t="lesson">The lesson: "autonomous" is not a yes/no switch. It's a choice about <i>where</i> a person checks the work — and saving or sending something is always one of those places.</p>
     </section>
@@ -86,15 +94,16 @@
 should feel exciting."
 No audience, channel, length, or tone guide stated beyond "exciting."</pre>
       </div>
+      <p class="muted" data-t="asked_note">The "audience" is who will read it. The "channel" is where it goes, like a blog or an email. A "tone guide" says how it should sound.</p>
     </section>
 
     <section class="card">
       <h2 data-t="runs_heading">What the real agents did</h2>
-      <p data-t="runs_intro">Two real runs, one per agent. Each time an agent stopped to ask, the reply typed back is shown too.</p>
+      <p data-t="runs_intro">Two real runs, one per agent. Each time an agent stopped to ask, our reply is shown too.</p>
       <div class="side-by-side">
         <div class="run" id="run-controlled" data-run="content-publish-readiness-agent-controlled"
-             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
-             data-ai="The agent" data-you="Reply typed back" data-file="The file it saved:"
+             data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+             data-ai="The agent" data-you="We replied" data-file="The agent saved"
              data-show="Show all" data-less="Show less"
              data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
              data-missing="This real run hasn't been added yet."
@@ -106,8 +115,8 @@ No audience, channel, length, or tone guide stated beyond "exciting."</pre>
           <p class="run-status muted" role="status">Loading the recorded run…</p>
         </div>
         <div class="run" id="run-autonomous" data-run="content-publish-readiness-agent-autonomous"
-             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
-             data-ai="The agent" data-you="Reply typed back" data-file="The file it saved:"
+             data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+             data-ai="The agent" data-you="We replied" data-file="The agent saved"
              data-show="Show all" data-less="Show less"
              data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
              data-missing="This real run hasn't been added yet."
@@ -120,7 +129,7 @@ No audience, channel, length, or tone guide stated beyond "exciting."</pre>
         </div>
       </div>
       <noscript><p class="warning">Showing the recorded runs needs JavaScript switched on in your browser.</p></noscript>
-      <p class="plain-words" data-t="notice"><b>Worth noticing:</b> the controlled agent's own instructions say the 6 checks should come in a reply of their own, not in the same reply that saves the file. In this run it saved the file and ran the checks together. It still stopped 3 times, but it didn't follow its instructions to the letter. Even a good agent is worth reading with care.</p>
+      <p class="plain-words" data-t="notice"><b>Worth noticing:</b> the controlled agent's own instructions say the 6 checks should come in a reply of their own, not in the same reply that saves the file. In this run it saved the file and ran the checks together. It still stopped 3 times, but it didn't follow its instructions exactly. Even a good agent is worth reading with care.</p>
     </section>
 
     <section class="card links">

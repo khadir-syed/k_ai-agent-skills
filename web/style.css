@@ -250,3 +250,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline
 
 /* Home page: the three parts of the repo */
 .part-card { --job: var(--amber); }
+
+/* "In short": the part a 7-year-old can read alone, at the top of every page */
+.easy { border-left: 4px solid var(--job); }
+.easy p { font-size: 19px; line-height: 1.5; margin: 0 0 6px; }
+.easy .easy-label { color: var(--job); font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; }div.plain-words { margin: 0 0 12px; }
+div.plain-words p { margin-bottom: 4px; }
+div.plain-words .checks { margin-bottom: 0; }

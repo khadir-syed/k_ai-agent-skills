@@ -27,6 +27,14 @@
       <p class="subtitle" data-t="subtitle">Same bug, two agents: one asks before every change, one keeps trying on its own</p>
     </header>
 
+    <section class="card easy" data-t="easy">
+      <p class="easy-label">In short</p>
+      <p>A program has a mistake. We call it a bug.</p>
+      <p>Two AI helpers try to fix it.</p>
+      <p>One asks you before it changes anything.</p>
+      <p>The other never asks. It stops after 3 tries.</p>
+    </section>
+
     <section class="card">
       <p data-t="intro_1">Think of two ways to get a leaking tap fixed. One plumber shows you what's wrong and asks before touching anything. The other is left alone with a rule: keep trying until the leak stops — but give up after three tries and call you.</p>
       <p data-t="intro_2">Both agents here do the same job: <a class="inline-link" href="../../skills/find/">find the bug</a>, fix it, and check the fix worked. The <b>controlled</b> one is a recipe card like every other agent on this site. The <b>autonomous</b> one is different: it's a small real program that runs by itself, so it never asks you anything. Its only brake is a limit on how many times it may try.</p>
@@ -67,7 +75,7 @@
       </svg>
       <p data-t="compare_1"><b>Controlled</b> stops twice: before it changes any code, and before it calls the bug fixed. A passing test isn't the same as you agreeing it's fixed.</p>
       <p data-t="compare_2"><b>Autonomous</b> never stops to ask. It runs the test, has the AI make the smallest fix, and runs the test again — until the test passes or it has used up its tries.</p>
-      <p class="lesson" data-t="lesson">The lesson: a program that never asks needs a hard limit — and someone should still look at what it changed. In an earlier test, given a test that could never pass, this program made it "pass" by changing the test instead of the code.</p>
+      <p class="lesson" data-t="lesson">The lesson: a program that never asks needs a hard limit — and someone should still look at what it changed. In an earlier try, when we gave it a test that could never pass, this program made it "pass" by changing the test instead of the code.</p>
     </section>
 
     <section class="card" id="asked">
@@ -105,11 +113,11 @@ AssertionError: assert 'Name,Email' == 'Name,Email,ID'</pre>
 
     <section class="card">
       <h2 data-t="runs_heading">What the real agents did</h2>
-      <p data-t="runs_intro">Two real runs, one per agent. Each time the controlled agent stopped to ask, the reply typed back is shown too. Both end with <code>export.py</code> as the agent left it.</p>
+      <p data-t="runs_intro">Two real runs, one per agent. Each time the controlled agent stopped to ask, our reply is shown too. Both end with <code>export.py</code> as the agent left it.</p>
       <div class="side-by-side">
         <div class="run" id="run-controlled" data-run="bug-fix-agent"
-             data-recorded="Recorded on" data-vary="Ask again and the words will differ."
-             data-ai="The agent" data-you="Reply typed back" data-file="The file at the end:"
+             data-recorded="Real run, recorded on" data-vary="Ask again and the words will be a bit different."
+             data-ai="The agent" data-you="We replied" data-file="The file at the end:"
              data-show="Show all" data-less="Show less"
              data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
              data-missing="This real run hasn't been added yet."
@@ -121,8 +129,8 @@ AssertionError: assert 'Name,Email' == 'Name,Email,ID'</pre>
           <p class="run-status muted" role="status">Loading the recorded run…</p>
         </div>
         <div class="run" id="run-autonomous" data-run="test-fix-loop-agent"
-             data-recorded="Recorded on" data-vary="Run it again and the words will differ."
-             data-ai="What the program printed" data-you="Reply typed back" data-file="The file at the end:"
+             data-recorded="Real run, recorded on" data-vary="Run it again and the words will be a bit different."
+             data-ai="What the program printed" data-you="We replied" data-file="The file at the end:"
              data-show="Show all" data-less="Show less"
              data-stops="In this run, it stopped to ask {n} times." data-stops-one="In this run, it stopped to ask once."
              data-stops-none="In this run, it never stopped to ask."
