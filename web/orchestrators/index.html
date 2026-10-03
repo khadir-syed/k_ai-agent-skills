@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Only this site's own files and the GitHub profile photo (the tab icon)
-       may load. Nothing on this page sends data anywhere. -->
+       may load. The only thing sent anywhere is a cookie-free visit count
+       (this page's address) to GoatCounter, by count.js. -->
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; script-src 'self'; connect-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+        content="default-src 'none'; script-src 'self'; connect-src 'self' https://khadir-syed.goatcounter.com; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
   <meta name="description" content="An orchestrator reads your request and sends it to the right AI agent. One checks its choice with you first; one doesn't, but says so out loud. See real recorded runs side by side.">
   <title>Send it to the right agent — k_ai-agent-skills</title>
@@ -15,6 +16,7 @@
   <link rel="stylesheet" href="../style.css">
   <script src="../markdown.js" defer></script>
   <script src="../run.js" defer></script>
+  <script src="../count.js" defer></script>
 </head>
 <body class="j-together">
   <!-- All English text lives right here, so the page reads instantly.

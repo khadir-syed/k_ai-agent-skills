@@ -22,6 +22,7 @@ RUN_PAGES = ([f"skills/{job}/index.html" for job in JOBS] + [f"agents/{a}/index.
 PAGES = ["index.html", "skills/index.html", "agents/index.html"] + RUN_PAGES
 # Old addresses from before the pages moved; each is now a tiny redirect.
 MOVED = {"find": "skills/find", "draft": "skills/draft", "check": "skills/check", "together": "agents/together"}
+GOATCOUNTER = "https://khadir-syed.goatcounter.com"
 problems = []
 
 
@@ -53,6 +54,13 @@ for name in PAGES + ["../index.html"] + [f"{old}/index.html" for old in MOVED]:
     check(not re.search(r'<script[^>]*src="(https?:)?//', page), f"{name}: script from another site")
     check(" style=" not in page, f"{name}: inline style= found (the CSP blocks it)")
     check(not re.search(r"\son[a-z]+=", page), f"{name}: inline event handler found")
+    # Data may only go to this site and GoatCounter's visit counter.
+    connect = re.search(r"connect-src ([^;]+);", csp.group(1)) if csp else None
+    check(not connect or set(connect.group(1).split()) <= {"'self'", GOATCOUNTER},
+          f"{name}: connect-src allows somewhere other than this site and GoatCounter")
+    if name in PAGES:
+        check(re.search(r'<script src="(\.\./)*count\.js" defer></script>', page) and connect
+              and GOATCOUNTER in connect.group(1), f"{name}: visit count (count.js) missing")
     # Every link to this site's own files must lead somewhere real.
     folder = os.path.dirname(os.path.join(HERE, name))
     for target in re.findall(r'<[a-z][^>]*?\s(?:href|src)="([^"#:]+)"', page):
@@ -175,11 +183,23 @@ if (!s.includes('"blockquote"') || !s.includes('"pre","children":["| x |\\n**raw
   console.error(s); process.exit(1);
 }
 """
+# count.js sends only the page's address (and a cache-buster), only from the live site.
+COUNT_CHECK = r"""
+const C = require("./web/count.js");
+const u = new URL(C.url("/k_ai-agent-skills/web/"));
+const ok = u.origin === "https://khadir-syed.goatcounter.com" && u.pathname === "/count"
+  && [...u.searchParams.keys()].sort().join() === "p,rnd" && u.searchParams.get("p") === "/k_ai-agent-skills/web/"
+  && C.isLiveSite("khadir-syed.github.io")
+  && !["localhost", "127.0.0.1", "github.io.evil.example"].some(C.isLiveSite);
+if (!ok) { console.error(u.href); process.exit(1); }
+"""
 words = lambda text: re.findall(r"[\w']+", text)
 present = [run for run in examples if run not in missing]
 if shutil.which("node"):
     r = subprocess.run(["node", "-e", MD_CHECK], cwd=ROOT, capture_output=True, text=True)
     check(r.returncode == 0, f"markdown.js self-check failed: {r.stderr}")
+    r = subprocess.run(["node", "-e", COUNT_CHECK], cwd=ROOT, capture_output=True, text=True)
+    check(r.returncode == 0, f"count.js self-check failed: {r.stderr}")
     if present:
         r = subprocess.run(["node", "-e", RUN_CHECK, json.dumps(present)], cwd=ROOT, capture_output=True, text=True)
         check(r.returncode == 0, f"reading the runs failed: {r.stderr}")

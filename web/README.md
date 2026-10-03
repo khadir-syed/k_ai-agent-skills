@@ -49,6 +49,11 @@ Good to know:
 - **The pages never talk to an AI.** They only show runs that were recorded
   earlier and saved in [`runs/`](runs/). Nothing you do on the page is sent
   anywhere.
+- **Visits are counted, without cookies.** Each page tells
+  [GoatCounter](https://www.goatcounter.com) its own address (like
+  `/k_ai-agent-skills/web/skills/find/`) and nothing else, only on the live
+  site. It's sent by this site's own [`count.js`](count.js), not GoatCounter's
+  script, so the pages still run only their own files.
 - **Nothing to install.** No sign-up, no downloads, no scripts from other
   websites — only this site's own files and the GitHub profile photo.
 - **The requests on each page are the repo's own examples.** Each page shows
@@ -67,6 +72,7 @@ Good to know:
 | `find/`, `draft/`, `check/`, `together/` | Tiny redirects from the old addresses, so links shared earlier still work |
 | `runs/<skill-name>.md` | The recorded runs (see below) |
 | `run.js` | Loads a recorded run and shows it: the start of a long answer, the rest behind "Show all" |
+| `count.js` | Counts a visit with GoatCounter: sends the page's address only, from the live site only, no cookies |
 | `markdown.js` | Turns the AI's formatting symbols (`##`, `**`, tables) into headings, bold and tables — safely, as plain text only. Copied from k_ai-basics, plus code blocks, `code` and quotes |
 | `style.css` | Colours match https://khadir-syed.github.io; each job has its own warm accent. The team tabs are plain radio buttons styled here, so they need no scripts |
 | `test_web.py` | The self-check (below) |
@@ -146,7 +152,10 @@ It checks, with no network:
 - every page opens with one **In short** part, and no sentence in it is
   longer than 10 words;
 - every page keeps its strict safety rules (no inline scripts or styles, no
-  scripts from other sites) and every link leads somewhere real;
+  scripts from other sites, data sent only to GoatCounter's visit counter)
+  and every link leads somewhere real;
+- every page counts its visit with `count.js`, which sends only the page's
+  address, and only from the live site;
 - each request shown on a page matches the repo's example file word for word;
 - every skill in `skills/` has its own tab, with one request and one run;
 - the old addresses still redirect to the moved pages;
